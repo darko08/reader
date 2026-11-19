@@ -2,7 +2,7 @@
 
 A fixed list of words, and a rule for reading any Bitcoin block hash through it. The list was locked and its hash carved on Bitcoin before any reading was published.
 
-Open the reader: [reader.html](reader.html) for one block, [day.html](day.html) for a whole day.
+Open the reader at **[readthestone.com](https://readthestone.com)** for one block, or [readthestone.com/day.html](https://readthestone.com/day.html) for a whole day.
 
 ## The list
 
@@ -64,11 +64,11 @@ The first must print the hash above, and that hash must match the OP_RETURN of t
 
 | File | What it is |
 |---|---|
-| [`reader.html`](reader.html) | The reader page. Type a block height, see the Silence, the eight words and the Sign. |
-| [`day.html`](day.html) | The day view. Type a date (UTC) and it reads every block of that day: the Signs in order, five readings the page picks, and a short piece made of half-readings, each linked to its block. |
+| [`reader.html`](reader.html) | The reader page, live at [readthestone.com](https://readthestone.com). Type a block height, see the Silence, the eight words and the Sign. |
+| [`day.html`](day.html) | The day view, live at [readthestone.com/day.html](https://readthestone.com/day.html). Type a date (UTC) and it reads every block of that day: the Signs in order, five readings the page picks, and a short piece made of half-readings, each linked to its block. |
 | [`alphabet.txt`](alphabet.txt) | The carved list |
 | [`CARVING.md`](CARVING.md) | The on-chain record of the carving, with the proof readings |
-| `CNAME` | The site's domain, `readthestone.com` |
+| `CNAME` | The site's domain, [readthestone.com](https://readthestone.com) |
 | [`glosses.txt`](glosses.txt) | One plain English gloss per word. Not carved, and not part of the reading rule. |
 | `gloss_src/`, [`make_glosses.py`](make_glosses.py) | The gloss sources and the script that builds `glosses.txt` |
 | [`reader.template.html`](reader.template.html), `day.template.html`, [`build.py`](build.py) | The page sources and the script that bakes the list, the glosses and the scorer's tags into `reader.html` and `day.html`. It refuses to build if the list does not match the carved hash or the proof readings. |
