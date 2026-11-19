@@ -9,7 +9,7 @@
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--fg)}
 body{font-family:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono","Courier New",monospace;font-size:16px;line-height:1.6}
-main{max-width:880px;margin:0 auto;padding:48px 16px 64px;display:flex;flex-direction:column;gap:36px}
+main{max-width:1150px;margin:0 auto;padding:48px 16px 64px;display:flex;flex-direction:column;gap:36px}
 form{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 label{color:var(--mid);font-size:13px}
 input,button{font:inherit;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:0;padding:8px 12px}
@@ -19,7 +19,18 @@ button:hover{border-color:var(--mid)}
 button[aria-pressed="true"]{border-color:var(--fg)}
 :focus-visible{outline:1px solid var(--fg);outline-offset:2px}
 [hidden]{display:none!important}
+/* the reading on the left, the live column of recent blocks on the right */
+.cols{display:grid;grid-template-columns:minmax(0,848px) minmax(0,1fr);gap:36px 48px;align-items:start}
+@media (max-width:900px){.cols{grid-template-columns:minmax(0,1fr)}}
 #reading{display:flex;flex-direction:column;gap:22px;min-height:230px}
+#recent{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;font-size:13px;overflow:hidden}
+#recent button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:8ch minmax(0,1fr);gap:0 2ch;width:100%;padding:1px 0;color:var(--dim);font-variant-numeric:tabular-nums}
+#recent button span{color:var(--mid);overflow-wrap:anywhere}
+#recent button:hover,#recent button:hover span{color:var(--fg)}
+#recent button:focus-visible{outline:1px solid var(--fg);outline-offset:2px}
+@keyframes rowin{from{opacity:0;transform:translateY(-100%)}to{opacity:1;transform:none}}
+#recent li.in{animation:rowin .6s ease-out 1}
+@media (prefers-reduced-motion:reduce){#recent li.in{animation:none}}
 .at{color:var(--mid);font-size:13px;overflow-wrap:anywhere}
 .silence{color:var(--dim);font-size:15px;display:flex;flex-wrap:wrap;gap:0 1ch}
 .words{font-size:clamp(22px,4.6vw,36px);line-height:1.35;display:flex;flex-wrap:wrap;gap:0 .6em;overflow-wrap:anywhere}
@@ -57,7 +68,10 @@ a:hover{color:var(--fg)}
     <a class="nav" href="day.html">a whole day</a>
   </form>
 
-  <section id="reading" aria-live="polite"></section>
+  <div class="cols">
+    <section id="reading" aria-live="polite"></section>
+    <ol id="recent" aria-label="the last 20 blocks"></ol>
+  </div>
 
   <footer>
     <div>alphabet sha-256 7483a0908ea1ae4553aa7808fceb6b414433064493bff353dca19ac73cb4b957</div>
@@ -77,6 +91,7 @@ const $ = id => document.getElementById(id);
 const out = $('reading'), input = $('h'), latestBtn = $('latest');
 const cache = new Map();           // height -> block hash
 let live = false, timer = null, shown = null, glossOpen = false, pulseNext = false;
+let recent = [];                  // the last 20 blocks, newest first: {height, hash}
 
 // The reading rule: leading zero hex chars are the silence,
 // the next 16 hex chars are 8 bytes, one index per column.
@@ -165,21 +180,66 @@ async function show(height) {
   catch (e) { say(e.message || 'could not reach mempool.space'); }
 }
 
+// ---- the live column: the last 20 blocks, height and sign only ----------------
+function drawRecent(fresh) {
+  const list = $('recent');
+  list.replaceChildren(...recent.map(b => {
+    const li = el('li', fresh && fresh.has(b.height) ? 'in' : null);
+    const btn = el('button', null, b.height.toLocaleString('en-US'));
+    btn.type = 'button';
+    btn.append(el('span', null, read(b.hash).words[0] || ''));
+    btn.addEventListener('click', () => { setLive(false); input.value = b.height; shown = null; show(b.height); });
+    li.append(btn);
+    return li;
+  }));
+}
+
+async function loadRecent(tip) {
+  const blocks = [];
+  for (let h = tip; blocks.length < 20 && h >= 0; ) {
+    const res = await fetch(API + '/v1/blocks/' + h, { cache: 'no-store' });
+    if (!res.ok) throw new Error('mempool.space answered ' + res.status);
+    const page = await res.json();
+    if (!page.length) break;
+    page.forEach(b => { cache.set(b.height, b.id); blocks.push({ height: b.height, hash: b.id }); });
+    h = page[page.length - 1].height - 1;
+  }
+  recent = blocks.slice(0, 20);
+  drawRecent(null);
+}
+
+function pulseHash() {
+  const h = out.querySelector('.hash');
+  if (!h) return;
+  h.classList.remove('pulse');
+  void h.offsetWidth;               // restart the animation
+  h.classList.add('pulse');
+}
+
+// every 20 seconds: has a new block landed?
 async function tick() {
   try {
     const tip = parseInt(await text(API + '/blocks/tip/height'), 10);
-    if (!live || isNaN(tip)) return;
-    if (tip !== shown) { pulseNext = shown !== null; input.value = tip; await show(tip); }
+    if (isNaN(tip)) return;
+    let landed = false;
+    if (!recent.length) await loadRecent(tip);
+    else if (tip > recent[0].height) {
+      const fresh = new Set();
+      for (let h = recent[0].height + 1; h <= tip; h++) { recent.unshift({ height: h, hash: await hashAt(h) }); fresh.add(h); }
+      recent = recent.slice(0, 20);  // the oldest rows drop off the bottom
+      drawRecent(fresh);
+      landed = true;
+    }
+    if (live && tip !== shown) { pulseNext = shown !== null; input.value = tip; await show(tip); }
+    else if (landed) pulseHash();
   } catch (e) { if (shown === null) say('could not reach mempool.space'); }
 }
 
 function setLive(on) {
   live = on;
   latestBtn.setAttribute('aria-pressed', String(on));
-  clearInterval(timer);
-  if (on) { tick(); timer = setInterval(tick, 20000); }
+  if (on) tick();
 }
-
 $('f').addEventListener('submit', e => {
   e.preventDefault();
   setLive(false);
@@ -199,6 +259,8 @@ function fromHash() {
 }
 addEventListener('hashchange', fromHash);
 if (!fromHash()) show(976509);
+tick();
+timer = setInterval(tick, 20000);
 </script>
 </body>
 </html>
