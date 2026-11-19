@@ -59,3 +59,16 @@ The hash must match the table above, and so must the OP_RETURN of the transactio
 
 - **Proves:** the word list was fixed at block 976,509. Every reading after that comes from the chain, not from the author.
 - **Does not prove:** that the chain "means" anything. The list is the author.
+
+## Domain
+
+The reader is served at `readthestone.com`.
+
+| | |
+|---|---|
+| Domain | `readthestone.com` |
+| Recorded at block height | 976,619 |
+| Block hash | `00000000000000000001cd9de0c31532e3e9f79092e6df248eddcbe82ce64ad7` |
+| That block's reading | tenth commanded fear room only castaway howled half (Silence 19, Sign *tenth*) |
+
+The height is the chain tip at the moment the domain was set for this site, on 19 November 2026 (UTC). It is a note in this file, not an on-chain record.
