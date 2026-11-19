@@ -1,0 +1,27 @@
+Licenses in this repository
+===========================
+
+1. Creative Commons Attribution 4.0 International (CC BY 4.0)
+   Full text: LICENSE-CC-BY-4.0.txt
+
+   Applies to:
+   - the Alphabet word list: alphabet.txt, and the same list as Python data
+     in columns8.py
+   - the glosses: glosses.txt and gloss_src/
+   - the reader page: reader.html, reader.template.html and index.html
+   - the proof screenshots and the text of README.md and CARVING.md
+
+   Attribution: the Alphabet was authored by the owner of this repository
+   (github.com/darko08). Its SHA-256 hash,
+   7483a0908ea1ae4553aa7808fceb6b414433064493bff353dca19ac73cb4b957,
+   was carved on Bitcoin at block 976,509 in transaction
+   224fccf84fbdbf5435f35efdcd0c8c1a5a4694612fb8f7121c8b56a6f8c1614e
+   (see CARVING.md). Any copy or fork must keep this attribution and the
+   carving txid.
+
+2. MIT License
+   Full text: LICENSE-MIT.txt
+
+   Applies to the Python scripts and the data files they load: reader8.py,
+   reader.py, read_layer.py, score.py, score8.py, lexicon.py, build.py,
+   make_glosses.py, tags8.json, sets8.json.

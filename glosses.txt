@@ -1,0 +1,2056 @@
+# column 1: subject
+quiet: silence; nothing is said here
+bucket: the pail for carrying water
+box: the closed container
+spoon: the small tool for eating
+cup: the small vessel for drinking
+bowl: the round open dish
+ladder: the frame of rungs for climbing
+chest: the heavy box with a lid
+oar: the pole that rows a boat
+mast: the tall pole that holds a sail
+sail: the cloth that catches the wind
+clock: the thing that counts the hours
+compass: the needle that finds north
+needle: the thin point that sews
+bread: the baked loaf
+wick: the thread that burns in a candle
+we: all of us
+you: the one being spoken to
+i: the one speaking
+they: those others
+she: that woman
+he: that man
+it: that thing
+maker: the one who began it
+reader: the one who reads the layers
+diver: the one who goes down
+probe: the machine sent down to look
+tender: the one who waits above and tends the line
+tenth: the one nobody sent
+mother: the mother
+father: the father
+child: the young one
+ghost: the spirit of someone dead
+stranger: the one nobody knows
+keeper: the one who guards
+sleeper: the one who sleeps
+miner: the one who digs for ore
+sailor: the one who works a ship
+widow: the woman whose husband died
+daughter: the daughter
+son: the son
+brother: the brother
+sister: the sister
+elder: the old and respected one
+pilot: the one who steers
+warden: the one in charge of the watch
+drowned: those lost under the water
+starved: those who went without food
+bride: the woman about to marry
+twin: the one born alongside another
+orphan: the child without parents
+beggar: the one who asks for alms
+fisher: the one who catches fish
+ferryman: the one who rows people across
+priest: the one who leads the prayers
+witness: the one who saw it happen
+thief: the one who steals
+singer: the one who sings
+mourner: the one who grieves the dead
+swimmer: the one who swims
+digger: the one who digs
+watchman: the one who keeps watch at night
+healer: the one who makes the sick well
+midwife: the woman who helps at a birth
+smith: the one who works metal
+weaver: the one who makes cloth
+hunter: the one who tracks prey
+hand: the hand
+eye: the eye
+mouth: the mouth
+hunger: the need to eat
+bone: the bone
+blood: the blood
+heart: the heart
+skin: the skin
+tooth: the tooth
+throat: the throat
+lung: the organ that breathes
+spine: the backbone
+skull: the bone of the head
+tongue: the tongue
+ear: the ear
+finger: the finger
+body: the body
+face: the face
+shoulder: the shoulder
+knee: the knee
+breath: the air drawn in and let out
+pulse: the beat of the blood
+rib: the curved bone of the chest
+heel: the back of the foot
+hair: the hair
+wrist: the joint above the hand
+jaw: the bone that holds the teeth
+palm: the flat of the hand
+vein: the vessel that carries blood
+belly: the stomach
+lip: the edge of the mouth
+salt: the salt
+tide: the rise and fall of the sea
+sea: the sea
+wave: the moving ridge of water
+current: the steady pull of the water
+undertow: the pull beneath the waves
+brine: the salt water
+flood: the rising water
+well: the deep hole that holds water
+rain: the rain
+ice: the frozen water
+mist: the thin fog
+foam: the white froth on water
+silt: the fine mud that settles
+reef: the ridge of rock under the sea
+shore: the edge of the land
+harbor: the sheltered place for ships
+anchor: the weight that holds a ship
+rope: the rope
+net: the mesh for catching fish
+keel: the spine of a ship
+hull: the body of a ship
+pressure: the weight of the deep
+water: the water
+river: the river
+storm: the storm
+frost: the frozen dew
+snow: the snow
+wind: the wind
+spray: the fine water thrown by waves
+kelp: the long brown seaweed
+eel: the long snake-like fish
+crab: the crab
+whale: the whale
+gull: the seabird
+pearl: the pearl
+shell: the shell
+coral: the stone built by sea creatures
+lamp: the lamp
+dark: the dark
+ember: the glowing coal
+glass: the glass
+shadow: the shadow
+fire: the fire
+smoke: the smoke
+ash: the ash
+spark: the spark
+candle: the candle
+moon: the moon
+star: the star
+dawn: the first light of day
+dusk: the last light of day
+night: the night
+morning: the morning
+lantern: the lamp that is carried
+mirror: the mirror
+gold: the gold
+light: the light
+flame: the flame
+answer: the reply
+call: the summons
+name: the name
+key: the key
+word: the word
+silence: the absence of sound
+promise: the pledge
+lie: the untruth
+song: the song
+prayer: the prayer
+secret: the hidden thing
+letter: the written message
+story: the tale
+question: the thing asked
+echo: the sound that comes back
+voice: the voice
+cry: the shout
+oath: the sworn word
+debt: the thing owed
+law: the rule
+vow: the solemn promise
+whisper: the hushed message
+chronicle: the record of what happened
+imprint: the mark pressed in
+sign: the mark that means something
+mark: the trace left behind
+static: the noise on the line
+memory: the thing remembered
+rumor: the unproven talk
+psalm: the sacred song
+hymn: the song of praise
+curse: the ill wish
+riddle: the puzzle in words
+verse: the line of a poem
+grief: the pain of loss
+sorrow: the sadness
+shame: the shame
+hope: the hope
+faith: the trust without proof
+longing: the ache for what is absent
+stone: the stone
+layer: the new skin of stone
+door: the door
+wreck: the ruined ship
+surface: the top of the water
+bottom: the floor of the deep
+wall: the wall
+gate: the gate
+bridge: the bridge
+tower: the tower
+stair: the steps
+cave: the hollow in the rock
+mine: the dug pit for ore
+shaft: the narrow pit going down
+chamber: the closed room
+vault: the locked room for treasure
+grave: the grave
+garden: the garden
+room: the room
+fear: the fear
+greed: the wanting of more
+mercy: the kindness to the helpless
+rust: the red decay of iron
+iron: the iron
+chain: the chain
+year: the year
+hour: the hour
+day: the day
+winter: the cold season
+home: the place one belongs
+sleep: the sleep
+dream: the dream
+weight: the heaviness
+bell: the bell
+coin: the coin
+ring: the ring
+thread: the thread
+cloth: the cloth
+nail: the nail
+wax: the wax
+oil: the oil
+ink: the ink
+map: the map
+knife: the knife
+hook: the hook
+wheel: the wheel
+cradle: the baby's bed
+coffin: the box for the dead
+boat: the boat
+ship: the ship
+veil: the thin cloth that hides a face
+moth: the night-flying insect
+root: the root
+seed: the seed
+lamb: the young sheep
+ox: the working bull
+choir: the group of singers
+flock: the gathered herd
+kin: the family
+# column 2: verb
+quiet: silence; nothing is said here
+drifted: was carried along
+drowned: went under and did not come up
+sank: went down
+floated: stayed on the surface
+swam: swam
+slept: slept
+woke: woke up
+burned: burned
+opened: opened
+closed: shut
+gave: gave
+took: took
+went: went
+came: arrived
+waited: waited
+remembered: kept in mind
+forgot: let slip from mind
+fell: fell
+rose: came up
+dug: dug
+carried: carried
+kept: held on to
+lost: could no longer find
+found: came upon
+held: held
+heard: heard
+saw: saw
+spoke: spoke
+wrote: wrote down
+broke: broke
+mended: repaired
+sealed: closed up for good
+followed: went after
+returned: came back
+left: went away from
+stayed: remained
+hid: hid
+watched: watched
+dreamed: dreamed of
+knocked: knocked at
+listened: listened to
+buried: put in the ground
+drank: drank
+answered: replied to
+called: called out to
+named: gave a name to
+lied: spoke falsely to
+cried: cried out
+feared: was afraid of
+marked: left a mark on
+signed: put a name to
+flooded: filled with water
+starved: went without food
+whispered: said very softly to
+promised: gave a pledge to
+echoed: sounded back
+wept: shed tears
+begged: pleaded with
+breathed: breathed
+choked: could not breathe
+froze: turned to ice
+shook: shook
+bled: lost blood
+turned: turned
+carved: cut into
+owed: was in debt to
+knelt: went down on its knees
+climbed: climbed
+descended: went down into
+asked: asked
+hungered: ached for
+dimmed: grew faint
+rusted: turned to rust
+wore: wore
+loved: loved
+hoped: hoped for
+lit: set alight
+sold: sold
+stole: stole
+sent: sent
+tasted: tasted
+touched: touched
+hummed: hummed
+sighed: let out a long breath
+slipped: slid away
+tore: ripped
+bound: tied fast
+nailed: fixed with nails
+drew: pulled
+emptied: emptied
+filled: filled
+swore: swore an oath to
+sang: sang
+prayed: prayed
+counted: counted
+washed: washed
+soaked: drenched
+rotted: decayed
+swayed: swung slowly
+swept: swept
+spilled: spilled
+poured: poured out
+gathered: gathered
+scattered: scattered
+wandered: roamed
+lingered: stayed too long
+vanished: disappeared
+surfaced: came up to the top
+settled: came to rest
+hardened: turned hard
+softened: turned soft
+darkened: turned dark
+kindled: set burning
+smothered: choked out
+dragged: dragged
+hauled: pulled up with effort
+lifted: raised
+lowered: let down
+pulled: pulled
+pushed: pushed
+pressed: pressed on
+crushed: crushed
+cracked: split
+shattered: broke into pieces
+melted: melted
+thawed: came unfrozen
+boiled: boiled
+cooled: grew cold
+warmed: grew warm
+shivered: shook with cold
+trembled: shook with fear
+stirred: moved a little
+rocked: swung gently
+cradled: held gently
+nursed: tended
+fed: fed
+ate: ate
+swallowed: swallowed
+spat: spat out
+bit: bit
+chewed: chewed
+kissed: kissed
+blessed: blessed
+cursed: wished ill on
+forgave: forgave
+judged: judged
+punished: punished
+paid: paid
+borrowed: borrowed
+lent: lent
+traded: traded
+bought: bought
+won: won
+failed: failed
+confessed: admitted to
+denied: denied
+betrayed: betrayed
+trusted: trusted
+doubted: doubted
+believed: believed
+knew: knew
+learned: learned
+taught: taught
+guessed: guessed
+measured: measured
+weighed: weighed
+mourned: mourned
+grieved: grieved
+laughed: laughed
+smiled: smiled
+screamed: screamed
+sobbed: wept aloud
+howled: howled
+moaned: moaned
+groaned: groaned
+murmured: spoke low
+chanted: chanted
+tolled: rang slowly
+rang: rang
+struck: struck
+wounded: wounded
+healed: made well
+stitched: stitched
+sewed: sewed
+wove: wove
+spun: spun
+knotted: tied in a knot
+tied: tied
+locked: locked
+unlocked: unlocked
+wrapped: wrapped
+covered: covered
+sought: looked for
+searched: searched
+hunted: hunted
+chased: chased
+fled: ran from
+ran: ran
+walked: walked
+crawled: crawled
+bowed: bowed
+stood: stood
+sat: sat
+laid: laid down
+rested: rested
+dwelt: lived in
+lived: lived
+died: died
+killed: killed
+saved: saved
+rescued: rescued
+guarded: guarded
+sheltered: gave shelter to
+welcomed: welcomed
+refused: refused
+obeyed: obeyed
+commanded: gave orders to
+summoned: called for
+invited: invited
+married: married
+bore: carried
+raised: raised
+grew: grew
+shrank: grew small
+swelled: grew large
+faded: faded
+glowed: glowed
+shone: shone
+flickered: flickered
+blinked: blinked
+stared: stared
+gazed: looked long at
+looked: looked
+noticed: noticed
+sensed: sensed
+felt: felt
+smelled: smelled
+ached: ached
+thirsted: thirsted for
+wished: wished for
+wanted: wanted
+needed: needed
+missed: missed
+meant: meant
+sailed: sailed
+rowed: rowed
+moored: tied up
+dove: plunged headfirst
+plunged: plunged
+sounded: measured the depth of
+hollowed: emptied out
+deepened: grew deeper
+widened: grew wider
+narrowed: grew narrower
+folded: folded
+# column 3: object or connective
+quiet: silence; nothing is said here
+the: the
+a: a
+no: no
+every: each and every
+all: all of
+your: your
+my: my
+our: our
+his: his
+her: her
+their: their
+into: into
+under: under
+through: through
+below: below
+beneath: underneath
+past: past
+toward: in the direction of
+from: from
+with: with
+beyond: on the far side of
+behind: behind
+above: above
+across: across
+inside: inside
+over: over
+between: between
+of: of
+to: to
+in: in
+locket: the small case worn on a chain
+rosary: the string of prayer beads
+ribbon: the ribbon
+shroud: the cloth that wraps the dead
+wreath: the ring of flowers
+mask: the mask
+crown: the crown
+scale: the scale of a fish
+fin: the fin
+gill: the slit a fish breathes through
+amber: the golden fossil resin
+lock: the lock
+horn: the horn
+tusk: the long tooth
+antler: the branching horn of a deer
+pelt: the animal skin with its fur
+fleece: the wool of a sheep
+maker: the one who began it
+reader: the one who reads the layers
+diver: the one who goes down
+probe: the machine sent down to look
+tender: the one who waits above and tends the line
+tenth: the one nobody sent
+mother: the mother
+father: the father
+child: the young one
+ghost: the spirit of someone dead
+stranger: the one nobody knows
+keeper: the one who guards
+sleeper: the one who sleeps
+miner: the one who digs for ore
+sailor: the one who works a ship
+widow: the woman whose husband died
+daughter: the daughter
+son: the son
+brother: the brother
+sister: the sister
+elder: the old and respected one
+pilot: the one who steers
+warden: the one in charge of the watch
+drowned: those lost under the water
+starved: those who went without food
+bride: the woman about to marry
+twin: the one born alongside another
+orphan: the child without parents
+beggar: the one who asks for alms
+fisher: the one who catches fish
+ferryman: the one who rows people across
+priest: the one who leads the prayers
+witness: the one who saw it happen
+thief: the one who steals
+singer: the one who sings
+mourner: the one who grieves the dead
+swimmer: the one who swims
+digger: the one who digs
+watchman: the one who keeps watch at night
+healer: the one who makes the sick well
+midwife: the woman who helps at a birth
+smith: the one who works metal
+weaver: the one who makes cloth
+hunter: the one who tracks prey
+hand: the hand
+eye: the eye
+mouth: the mouth
+hunger: the need to eat
+bone: the bone
+blood: the blood
+heart: the heart
+skin: the skin
+tooth: the tooth
+throat: the throat
+lung: the organ that breathes
+spine: the backbone
+skull: the bone of the head
+tongue: the tongue
+ear: the ear
+finger: the finger
+body: the body
+face: the face
+shoulder: the shoulder
+knee: the knee
+breath: the air drawn in and let out
+pulse: the beat of the blood
+rib: the curved bone of the chest
+heel: the back of the foot
+hair: the hair
+wrist: the joint above the hand
+jaw: the bone that holds the teeth
+palm: the flat of the hand
+vein: the vessel that carries blood
+belly: the stomach
+lip: the edge of the mouth
+salt: the salt
+tide: the rise and fall of the sea
+sea: the sea
+wave: the moving ridge of water
+current: the steady pull of the water
+undertow: the pull beneath the waves
+brine: the salt water
+flood: the rising water
+well: the deep hole that holds water
+rain: the rain
+ice: the frozen water
+mist: the thin fog
+foam: the white froth on water
+silt: the fine mud that settles
+reef: the ridge of rock under the sea
+shore: the edge of the land
+harbor: the sheltered place for ships
+anchor: the weight that holds a ship
+rope: the rope
+net: the mesh for catching fish
+keel: the spine of a ship
+hull: the body of a ship
+pressure: the weight of the deep
+water: the water
+river: the river
+storm: the storm
+frost: the frozen dew
+snow: the snow
+wind: the wind
+spray: the fine water thrown by waves
+kelp: the long brown seaweed
+eel: the long snake-like fish
+crab: the crab
+whale: the whale
+gull: the seabird
+pearl: the pearl
+shell: the shell
+coral: the stone built by sea creatures
+lamp: the lamp
+dark: the dark
+ember: the glowing coal
+glass: the glass
+shadow: the shadow
+fire: the fire
+smoke: the smoke
+ash: the ash
+spark: the spark
+candle: the candle
+moon: the moon
+star: the star
+dawn: the first light of day
+dusk: the last light of day
+night: the night
+morning: the morning
+lantern: the lamp that is carried
+mirror: the mirror
+gold: the gold
+light: the light
+flame: the flame
+answer: the reply
+call: the summons
+name: the name
+key: the key
+word: the word
+silence: the absence of sound
+promise: the pledge
+lie: the untruth
+song: the song
+prayer: the prayer
+secret: the hidden thing
+letter: the written message
+story: the tale
+question: the thing asked
+echo: the sound that comes back
+voice: the voice
+cry: the shout
+oath: the sworn word
+debt: the thing owed
+law: the rule
+vow: the solemn promise
+whisper: the hushed message
+chronicle: the record of what happened
+imprint: the mark pressed in
+sign: the mark that means something
+mark: the trace left behind
+static: the noise on the line
+memory: the thing remembered
+rumor: the unproven talk
+psalm: the sacred song
+hymn: the song of praise
+curse: the ill wish
+riddle: the puzzle in words
+verse: the line of a poem
+grief: the pain of loss
+sorrow: the sadness
+shame: the shame
+hope: the hope
+faith: the trust without proof
+longing: the ache for what is absent
+fear: the fear
+greed: the wanting of more
+mercy: the kindness to the helpless
+rust: the red decay of iron
+iron: the iron
+chain: the chain
+year: the year
+hour: the hour
+day: the day
+winter: the cold season
+home: the place one belongs
+sleep: the sleep
+dream: the dream
+weight: the heaviness
+one: a single one
+two: a pair
+three: three of them
+nine: nine of them
+ten: ten of them
+none: not one
+bell: the bell
+coin: the coin
+ring: the ring
+thread: the thread
+nail: the nail
+ink: the ink
+knife: the knife
+hook: the hook
+wheel: the wheel
+cradle: the baby's bed
+coffin: the box for the dead
+boat: the boat
+ship: the ship
+veil: the thin cloth that hides a face
+# column 4: place
+quiet: silence; nothing is said here
+one: a single one
+two: a pair
+three: three of them
+nine: nine of them
+ten: ten of them
+none: not one
+wreck: the ruined ship
+surface: the top of the water
+bottom: the floor of the deep
+wall: the wall
+gate: the gate
+room: the room
+bridge: the bridge
+tower: the tower
+stair: the steps
+cave: the hollow in the rock
+mine: the dug pit for ore
+shaft: the narrow pit going down
+chamber: the closed room
+vault: the locked room for treasure
+grave: the grave
+garden: the garden
+harbor: the sheltered place for ships
+shore: the edge of the land
+reef: the ridge of rock under the sea
+hull: the body of a ship
+keel: the spine of a ship
+well: the deep hole that holds water
+house: the house
+home: the place one belongs
+church: the church
+field: the open field
+city: the city
+road: the road
+window: the window
+floor: the floor
+door: the door
+threshold: the step at the doorway
+layer: the new skin of stone
+depth: the deep part
+seabed: the floor of the sea
+trench: the long deep cut
+pit: the hole in the ground
+cellar: the room under the house
+basin: the wide bowl of land or water
+bed: the bed
+boat: the boat
+ship: the ship
+dark: the dark
+deep: the deep water
+sea: the sea
+tide: the rise and fall of the sea
+water: the water
+ice: the frozen water
+mist: the thin fog
+night: the night
+attic: the room under the roof
+altar: the table of offering
+abyss: the bottomless deep
+bay: the curve of sea held by land
+beach: the sandy shore
+belfry: the tower where the bells hang
+bog: the wet soft ground
+cabin: the small wooden shelter
+canal: the dug waterway
+cape: the point of land in the sea
+chapel: the small place of prayer
+chasm: the deep split in the earth
+cliff: the steep wall of rock
+cloister: the covered walk of a monastery
+coast: the land along the sea
+court: the enclosed yard
+crypt: the room of the dead under a church
+delta: the fan of land at a river's mouth
+den: the animal's hidden home
+dock: the place where ships tie up
+dune: the hill of sand
+estuary: the river mouth where the tide comes in
+forge: the smith's fire and workshop
+fountain: the spring of rising water
+furnace: the great oven of fire
+gallery: the long room or mine passage
+gorge: the narrow steep valley
+grotto: the small cave
+gulf: the wide arm of the sea
+gutter: the channel that carries water away
+hall: the large room
+hearth: the floor of the fireplace
+hill: the hill
+hold: the cargo space of a ship
+hollow: the sunken place
+island: the island
+jetty: the small pier
+kitchen: the kitchen
+labyrinth: the maze
+lagoon: the shallow water behind a reef
+landing: the place where boats come ashore
+lane: the narrow road
+larder: the cool room where food is kept
+lighthouse: the tower with the warning light
+loft: the space under the roof
+marsh: the low wet land
+meadow: the field of grass
+mill: the building that grinds grain
+moat: the ditch of water around a castle
+monastery: the house of monks
+mooring: the place a boat is tied
+narrows: the tight part of a channel
+nave: the long central part of a church
+orchard: the garden of fruit trees
+oven: the oven
+parlor: the room for receiving guests
+passage: the corridor
+pasture: the grazing land
+pier: the walkway built over water
+pool: the still small water
+porch: the covered entrance
+prison: the prison
+quarry: the pit where stone is cut
+quay: the stone edge where ships unload
+rampart: the defensive wall
+ravine: the deep narrow gully
+reservoir: the stored water
+ridge: the long high edge of land
+river: the river
+rock: the rock
+roof: the roof
+ruin: the broken remains of a building
+sanctuary: the safe and holy place
+sandbar: the ridge of sand in the water
+school: the school
+shallows: the shallow water
+shed: the small storage hut
+shelf: the ledge
+shrine: the small holy place
+sluice: the gate that lets water through
+sound: the channel between two seas
+spring: the place water rises from the ground
+square: the open place in a town
+stable: the house for horses
+steeple: the pointed church tower
+strait: the narrow water between two lands
+stream: the small river
+street: the street
+swamp: the flooded forest ground
+tavern: the house that sells drink
+temple: the temple
+terrace: the raised flat ground
+thicket: the dense tangle of bushes
+tomb: the tomb
+tunnel: the tunnel
+undercroft: the vaulted cellar under a church
+valley: the valley
+vestry: the room where the priest robes
+village: the small settlement
+vineyard: the field of grapevines
+wharf: the platform where ships load
+yard: the yard
+abbey: the church of a monastery
+aqueduct: the bridge that carries water
+archive: the place where records are kept
+bath: the bath
+barrow: the ancient burial mound
+berth: the place where a ship lies
+bilge: the lowest inside of a ship
+cistern: the tank that holds rainwater
+drain: the pipe that carries water away
+ferry: the boat that carries people across
+font: the basin of holy water
+gallows: the frame for hanging
+hatch: the door in a deck
+hive: the home of the bees
+inn: the house for travelers
+kiln: the oven for firing clay
+lake: the lake
+library: the house of books
+nest: the nest
+orphanage: the home for children without parents
+outpost: the far small station
+pantry: the small room for food
+pen: the fenced place for animals
+pew: the church bench
+pulpit: the stand a preacher speaks from
+rafters: the beams under the roof
+stern: the back of a ship
+womb: the place before birth
+cradle: the baby's bed
+coffin: the box for the dead
+crossroads: the place where roads meet
+graveyard: the burial ground
+churchyard: the ground around a church
+boathouse: the shed for boats
+bellhouse: the house of the bell
+saltworks: the place where salt is made
+shipyard: the place where ships are built
+cemetery: the field of graves
+hospital: the house of the sick
+asylum: the house of refuge
+station: the fixed post
+lowlands: the low flat country
+highlands: the high country
+bedrock: the solid rock beneath everything
+seafloor: the bottom of the sea
+riverbed: the bottom of the river
+shoreline: the line where land meets water
+coastline: the outline of the coast
+horizon: the line where sky meets sea
+underworld: the land of the dead
+deepwater: the deep open water
+backwater: the still water off the current
+millpond: the still pond behind a mill
+bathhouse: the house for bathing
+washhouse: the house for washing clothes
+storehouse: the building where goods are kept
+warehouse: the large building for cargo
+lockhouse: the keeper's house at a canal lock
+gatehouse: the house that guards a gate
+seawall: the wall that holds back the sea
+breakwater: the barrier that breaks the waves
+galley: the ship's kitchen
+chancel: the part of a church near the altar
+ford: the shallow place to cross a river
+inlet: the narrow arm of water
+cove: the small sheltered bay
+creek: the small stream
+fjord: the long sea arm between cliffs
+sinkhole: the hole where the ground fell in
+sump: the pit where water collects
+adit: the level tunnel into a mine
+stope: the dug-out step inside a mine
+causeway: the raised road across water
+dyke: the bank that holds water back
+levee: the bank along a river
+weir: the low dam across a river
+floodplain: the flat land a river floods
+tidepool: the pool the tide leaves behind
+rockpool: the pool among the rocks
+foreshore: the shore between the tides
+mudflat: the flat mud left by the tide
+saltmarsh: the marsh the sea floods
+sandbank: the bank of sand under water
+shoal: the shallow place in the sea
+hut: the small rough shelter
+hovel: the poor small house
+cottage: the small country house
+manor: the great house of an estate
+palace: the palace
+castle: the castle
+dungeon: the prison under a castle
+cell: the small locked room
+ward: the room of the sick
+nursery: the room for small children
+ossuary: the place where bones are kept
+catacomb: the tunnel of graves
+mausoleum: the grand building of a tomb
+# column 5: connective or verb
+quiet: silence; nothing is said here
+and: and
+but: but
+so: and so
+until: up to the time when
+when: at the time when
+while: during the time that
+because: for the reason that
+where: in the place where
+as: at the same moment that
+then: after that
+before: earlier than when
+after: later than when
+till: until
+yet: and even so
+or: or else
+if: on the condition that
+though: even though
+since: ever since
+once: as soon as
+not: not
+never: at no time
+always: at every time
+again: once more
+is: is
+was: was
+were: were
+will: is going to
+who: the one who
+what: the thing that
+nor: and also not
+for: because
+although: even though
+unless: except if
+whether: if it is so or not that
+whereas: while on the other hand
+whenever: every time that
+wherever: in any place that
+whoever: any person who
+whatever: any thing that
+however: but all the same
+therefore: for that reason
+thus: in this way
+hence: and from this
+meanwhile: during the same time
+still: even now
+also: as well
+too: as well
+even: even
+only: and nothing more than
+just: only
+ever: at any time
+soon: before long
+later: after some time
+now: at this moment
+here: in this place
+there: in that place
+thence: from that place
+whence: from the place where
+hither: to this place
+thither: to that place
+below: lower down
+above: higher up
+beneath: underneath
+under: under
+over: over
+through: through
+across: across
+along: along
+among: in the middle of
+amid: surrounded by
+around: around
+about: about
+against: against
+toward: in the direction of
+towards: in the direction of
+into: into
+onto: onto
+upon: on top of
+within: inside
+without: lacking
+beyond: on the far side of
+behind: behind
+beside: next to
+besides: apart from
+between: between
+betwixt: between
+past: past
+near: close to
+inside: inside
+outside: outside
+throughout: all the way through
+underneath: directly under
+alongside: side by side with
+despite: in spite of
+except: leaving out
+like: in the same way as
+unlike: not in the same way as
+than: compared with
+would: was willing to
+could: was able to
+should: ought to
+might: was perhaps going to
+must: has to
+shall: is bound to
+may: is allowed to
+can: is able to
+cannot: is not able to
+did: did
+does: does
+do: do
+has: has
+had: had
+have: have
+being: while being
+been: having been
+be: be
+whom: the one to whom
+whose: the one belonging to whom
+which: the one that
+that: that
+this: this
+these: these
+those: those
+the: the
+a: a
+an: a
+no: no
+every: each and every
+each: every single
+all: all
+some: some
+any: any
+both: the two together
+either: one or the other
+neither: not one and not the other
+such: of that kind
+of: of
+to: to
+in: in
+on: on
+at: at
+by: by
+from: from
+with: with
+almost: very nearly
+nearly: very close to
+hardly: only just
+scarcely: only just
+barely: only just
+perhaps: it may be that
+maybe: it may be that
+surely: without doubt
+indeed: truly
+rather: instead
+quite: fully
+very: very
+lest: for fear that
+ere: before
+whilst: during the time that
+albeit: even though
+yonder: over there
+anon: soon
+nay: no
+yea: yes
+aye: yes
+oh: oh
+alas: sadly
+o: oh
+hush: be silent
+hark: listen
+lo: look
+behold: see
+amen: so be it
+thereafter: after that
+therein: inside that
+thereby: by that means
+wherein: inside which
+whereby: by which
+whereupon: and right after that
+drift: be carried along
+drown: go under and not come up
+sink: go down
+float: stay on the surface
+swim: swim
+sleep: sleep
+wake: wake up
+burn: burn
+open: open
+close: shut
+give: give
+take: take
+go: go
+come: arrive
+wait: wait
+remember: keep in mind
+forget: let slip from mind
+fall: fall
+rise: come up
+dig: dig
+carry: carry
+keep: hold on to
+lose: no longer find
+find: come upon
+hold: hold
+hear: hear
+see: see
+speak: speak
+write: write down
+break: break
+mend: repair
+seal: close up for good
+follow: go after
+return: come back
+leave: go away
+stay: remain
+hide: hide
+watch: watch
+dream: dream
+knock: knock
+listen: listen
+bury: put in the ground
+drink: drink
+answer: reply
+call: call out
+name: give a name to
+lie: speak falsely
+cry: cry out
+fear: be afraid of
+mark: leave a mark on
+sign: put a name to
+flood: fill with water
+whisper: say very softly
+promise: give a pledge
+echo: sound back
+hunger: ache for
+rust: turn to rust
+light: set alight
+empty: with nothing inside
+surface: come up to the top
+hollow: empty out
+starve: go without food
+weep: shed tears
+beg: plead
+breathe: breathe
+choke: fail to breathe
+freeze: turn to ice
+shake: shake
+bleed: lose blood
+turn: turn
+carve: cut into stone
+owe: be in debt
+kneel: go down on the knees
+climb: climb
+descend: go down
+ask: ask
+# column 6: subject
+quiet: silence; nothing is said here
+captain: the one who commands the ship
+uncle: the uncle
+aunt: the aunt
+grandmother: the grandmother
+grandfather: the grandfather
+husband: the husband
+wife: the wife
+infant: the baby
+boy: the boy
+girl: the girl
+neighbor: the one who lives next door
+guest: the visitor
+servant: the one who serves
+master: the one in command
+mistress: the woman in command of the house
+shepherd: the one who tends sheep
+ploughman: the one who turns the soil
+sexton: the one who tends the church and its graves
+gravedigger: the one who digs graves
+undertaker: the one who buries the dead
+nun: the woman under holy vows
+monk: the man under holy vows
+abbot: the head of a monastery
+bishop: the high priest of a region
+deacon: the priest's helper
+crew: the people who work the ship
+lookout: the one who watches from high up
+helmsman: the one at the wheel
+navigator: the one who plots the course
+harpooner: the one who throws the spear at whales
+whaler: the one who hunts whales
+soldier: the soldier
+sentry: the guard at the post
+guard: the guard
+drummer: the one who beats the drum
+piper: the one who plays the pipe
+fiddler: the one who plays the fiddle
+poet: the one who writes verses
+judge: the one who decides guilt
+jailer: the one who holds the keys of the prison
+prisoner: the one locked up
+exile: the one sent away from home
+pilgrim: the traveler to a holy place
+wanderer: the one with no fixed road
+traveler: the one on a journey
+messenger: the one who carries word
+herald: the one who announces
+king: the king
+queen: the queen
+prince: the prince
+princess: the princess
+lord: the lord
+lady: the lady
+heir: the one who will inherit
+widower: the man whose wife died
+foundling: the abandoned child who was found
+changeling: the child swapped in secret
+saint: the holy one
+martyr: the one who died for a belief
+prophet: the one who foretells
+oracle: the one who speaks what will come
+seer: the one who sees ahead
+witch: the woman who works spells
+hermit: the one who lives alone
+fool: the foolish one
+liar: the one who lies
+debtor: the one who owes
+creditor: the one who is owed
+congregation: the people gathered to pray
+lamplighter: the one who lights the street lamps
+stepmother: the father's new wife
+godmother: the woman who stands for a child at baptism
+nurse: the one who tends the sick
+matron: the woman in charge of the ward
+governess: the woman who teaches children at home
+beadle: the minor officer of a parish
+bailiff: the officer who seizes for debt
+coroner: the one who rules on a death
+magistrate: the local judge
+constable: the officer of the peace
+vagrant: the homeless wanderer
+drifter: the one who moves from place to place
+castaway: the one washed ashore from a wreck
+stowaway: the one hidden aboard a ship
+mutineer: the sailor who rose against the captain
+smuggler: the one who carries goods in secret
+wrecker: the one who plunders wrecked ships
+salvager: the one who recovers what sank
+lightkeeper: the one who tends the lighthouse
+fishwife: the woman who sells fish
+oysterman: the one who gathers oysters
+cockler: the one who gathers cockles
+mudlark: the one who scavenges the river mud
+cabinboy: the boy who serves aboard a ship
+fisherman: the one who fishes for a living
+dog: the dog
+hound: the hunting dog
+cat: the cat
+horse: the horse
+mare: the female horse
+foal: the young horse
+cow: the cow
+calf: the young cow
+goat: the goat
+ram: the male sheep
+ewe: the female sheep
+pig: the pig
+hen: the hen
+rooster: the male chicken
+crow: the crow
+raven: the large black bird
+rook: the black bird of the fields
+owl: the owl
+heron: the tall wading bird
+swan: the swan
+cormorant: the black diving seabird
+gannet: the white plunging seabird
+tern: the small sharp-winged seabird
+petrel: the small bird of the open sea
+albatross: the great wandering seabird
+seal: the seal
+otter: the otter
+herring: the small silver fish
+cod: the cod
+mackerel: the striped sea fish
+lobster: the lobster
+oyster: the oyster
+mussel: the dark-shelled shellfish
+limpet: the shell that clings to rock
+barnacle: the small shell that crusts a hull
+jellyfish: the jellyfish
+octopus: the octopus
+squid: the squid
+shark: the shark
+worm: the worm
+spider: the spider
+rat: the rat
+bat: the bat
+fox: the fox
+wolf: the wolf
+hare: the hare
+deer: the deer
+mole: the small digger in the earth
+toad: the toad
+frog: the frog
+wren: the tiny brown bird
+lark: the bird that sings at dawn
+sparrow: the sparrow
+robin: the red-breasted bird
+magpie: the black and white thieving bird
+plover: the small shore bird
+curlew: the shore bird with the curved bill
+sandpiper: the small bird that runs on the sand
+kittiwake: the small ocean gull
+puffin: the seabird with the bright beak
+shearwater: the seabird that skims the waves
+skua: the seabird that robs other birds
+osprey: the hawk that catches fish
+kestrel: the small hovering falcon
+hawk: the hawk
+falcon: the falcon
+eagle: the eagle
+bittern: the marsh bird with the booming call
+lapwing: the crested bird of wet fields
+nightjar: the bird that calls at night
+dolphin: the dolphin
+porpoise: the small blunt-nosed dolphin
+orca: the black and white killer whale
+narwhal: the whale with the single long tusk
+walrus: the walrus
+stingray: the flat fish with the barbed tail
+shrimp: the shrimp
+prawn: the large shrimp
+starfish: the starfish
+urchin: the spiny ball of the seabed
+anemone: the sea creature like a flower
+lamprey: the jawless sucking fish
+rainstorm: the storm of rain
+downpour: the sudden heavy rain
+cloudburst: the sudden violent rain
+blizzard: the blinding storm of snow
+snowstorm: the storm of snow
+hailstorm: the storm of ice stones
+thunderhead: the towering storm cloud
+monsoon: the season of great rains
+typhoon: the great storm of the eastern sea
+hurricane: the great storm of wind
+cyclone: the turning storm
+whirlwind: the spinning column of wind
+zephyr: the soft west wind
+haze: the thin veil in the air
+rime: the white frost that coats things
+hoarfrost: the white feathers of frost
+flurry: the brief light snowfall
+deluge: the great flood
+torrent: the rushing stream
+spindrift: the spray blown off the wave tops
+haar: the cold fog from the sea
+rainbow: the rainbow
+aurora: the lights in the polar sky
+joy: the joy
+pity: the pity
+patience: the patience
+wrath: the great anger
+envy: the envy
+pride: the pride
+despair: the loss of all hope
+dread: the fear of what is coming
+awe: the wonder mixed with fear
+guilt: the guilt
+regret: the regret
+honor: the honor
+glory: the glory
+peace: the peace
+omen: the sign of what is to come
+fate: the thing that cannot be avoided
+luck: the luck
+chance: the chance
+fortune: the fortune
+hush: the sudden quiet
+absence: the absence
+presence: the sense that someone is there
+distance: the distance
+thirst: the thirst
+famine: the time without food
+plague: the spreading sickness
+fever: the fever
+sickness: the sickness
+cure: the cure
+remedy: the remedy
+rage: the rage
+mirth: the laughter
+folly: the foolishness
+fog: the fog
+cloud: the cloud
+thunder: the sound after lightning
+lightning: the lightning
+hail: the falling ice
+sleet: the rain mixed with snow
+dew: the dew
+drizzle: the fine light rain
+squall: the sudden violent wind
+gale: the strong wind
+breeze: the light wind
+tempest: the violent storm
+ripple: the small wave
+eddy: the small circling current
+whirlpool: the water that spins and pulls down
+sand: the sand
+pebble: the small smooth stone
+shingle: the beach of small stones
+mud: the mud
+wound: the wound
+scar: the mark of a healed wound
+bruise: the bruise
+# column 7: verb
+quiet: silence; nothing is said here
+cooled: grew cold
+warmed: grew warm
+shivered: shook with cold
+trembled: shook with fear
+stirred: moved a little
+rocked: swung gently
+cradled: held gently
+nursed: tended
+fed: fed
+ate: ate
+swallowed: swallowed
+spat: spat out
+bit: bit
+chewed: chewed
+kissed: kissed
+blessed: blessed
+cursed: wished ill on
+forgave: forgave
+judged: judged
+punished: punished
+paid: paid
+borrowed: borrowed
+lent: lent
+traded: traded
+bought: bought
+won: won
+failed: failed
+confessed: admitted to
+denied: denied
+betrayed: betrayed
+trusted: trusted
+doubted: doubted
+believed: believed
+knew: knew
+learned: learned
+taught: taught
+guessed: guessed
+measured: measured
+weighed: weighed
+mourned: mourned
+grieved: grieved
+laughed: laughed
+smiled: smiled
+screamed: screamed
+sobbed: wept aloud
+howled: howled
+moaned: moaned
+groaned: groaned
+murmured: spoke low
+chanted: chanted
+tolled: rang slowly
+rang: rang
+struck: struck
+wounded: wounded
+healed: made well
+stitched: stitched
+sewed: sewed
+wove: wove
+spun: spun
+knotted: tied in a knot
+tied: tied
+locked: locked
+unlocked: unlocked
+wrapped: wrapped
+covered: covered
+sought: looked for
+searched: searched
+hunted: hunted
+chased: chased
+fled: ran from
+ran: ran
+walked: walked
+crawled: crawled
+bowed: bowed
+stood: stood
+sat: sat
+laid: laid down
+rested: rested
+dwelt: lived in
+lived: lived
+died: died
+killed: killed
+saved: saved
+rescued: rescued
+guarded: guarded
+sheltered: gave shelter to
+welcomed: welcomed
+refused: refused
+obeyed: obeyed
+commanded: gave orders to
+summoned: called for
+invited: invited
+married: married
+bore: carried
+raised: raised
+grew: grew
+shrank: grew small
+swelled: grew large
+faded: faded
+glowed: glowed
+shone: shone
+flickered: flickered
+blinked: blinked
+stared: stared
+gazed: looked long at
+looked: looked
+noticed: noticed
+sensed: sensed
+felt: felt
+smelled: smelled
+ached: ached
+thirsted: thirsted for
+wished: wished for
+wanted: wanted
+needed: needed
+missed: missed
+meant: meant
+sailed: sailed
+rowed: rowed
+moored: tied up
+dove: plunged headfirst
+plunged: plunged
+sounded: measured the depth of
+hollowed: emptied out
+deepened: grew deeper
+widened: grew wider
+narrowed: grew narrower
+folded: folded
+dripped: fell in drops
+paused: stopped for a moment
+waded: walked through the water
+rinsed: washed clean
+drifted: was carried along
+drowned: went under and did not come up
+sank: went down
+floated: stayed on the surface
+swam: swam
+slept: slept
+woke: woke up
+burned: burned
+opened: opened
+closed: shut
+gave: gave
+took: took
+went: went
+came: arrived
+waited: waited
+remembered: kept in mind
+forgot: let slip from mind
+fell: fell
+rose: came up
+dug: dug
+carried: carried
+kept: held on to
+lost: could no longer find
+found: came upon
+held: held
+heard: heard
+saw: saw
+spoke: spoke
+wrote: wrote down
+broke: broke
+mended: repaired
+sealed: closed up for good
+followed: went after
+returned: came back
+left: went away from
+stayed: remained
+hid: hid
+watched: watched
+dreamed: dreamed of
+knocked: knocked at
+listened: listened to
+buried: put in the ground
+drank: drank
+answered: replied to
+called: called out to
+named: gave a name to
+lied: spoke falsely to
+cried: cried out
+feared: was afraid of
+marked: left a mark on
+signed: put a name to
+flooded: filled with water
+starved: went without food
+whispered: said very softly to
+promised: gave a pledge to
+echoed: sounded back
+wept: shed tears
+begged: pleaded with
+breathed: breathed
+choked: could not breathe
+froze: turned to ice
+shook: shook
+bled: lost blood
+turned: turned
+carved: cut into
+owed: was in debt to
+knelt: went down on its knees
+climbed: climbed
+descended: went down into
+asked: asked
+hungered: ached for
+dimmed: grew faint
+rusted: turned to rust
+wore: wore
+loved: loved
+hoped: hoped for
+lit: set alight
+sold: sold
+stole: stole
+sent: sent
+tasted: tasted
+touched: touched
+hummed: hummed
+sighed: let out a long breath
+slipped: slid away
+tore: ripped
+bound: tied fast
+nailed: fixed with nails
+drew: pulled
+emptied: emptied
+filled: filled
+swore: swore an oath to
+sang: sang
+prayed: prayed
+counted: counted
+washed: washed
+soaked: drenched
+rotted: decayed
+swayed: swung slowly
+swept: swept
+spilled: spilled
+poured: poured out
+gathered: gathered
+scattered: scattered
+wandered: roamed
+lingered: stayed too long
+vanished: disappeared
+surfaced: came up to the top
+settled: came to rest
+hardened: turned hard
+softened: turned soft
+darkened: turned dark
+kindled: set burning
+smothered: choked out
+dragged: dragged
+hauled: pulled up with effort
+lifted: raised
+lowered: let down
+pulled: pulled
+pushed: pushed
+pressed: pressed on
+crushed: crushed
+cracked: split
+# column 8: final word
+quiet: silence; nothing is said here
+cold: cold
+again: once more
+alone: with no one else
+below: lower down
+deeper: further down
+home: back where it belongs
+forever: for all time
+still: without moving
+back: to where it was before
+down: downward
+away: to somewhere else
+here: in this place
+there: in that place
+once: one single time
+twice: two times
+slowly: without hurry
+together: side by side
+last: after all the others
+first: before all the others
+dead: no longer alive
+asleep: sleeping
+awake: not sleeping
+empty: with nothing inside
+heavy: hard to lift
+hollow: empty inside
+silent: making no sound
+open: not shut
+closed: shut
+drowned: lost under the water
+lost: not to be found
+found: discovered at last
+salt: tasting of the sea
+dark: without light
+dust: turned to dust
+nothing: not anything
+everything: all there is
+gold: the color of gold
+ever: at any time
+too: as well
+late: after the right time
+early: before the right time
+long: for a long time
+whole: in one piece
+bare: uncovered
+blind: unable to see
+far: a long way off
+near: close by
+low: close to the ground
+soft: gentle to the touch
+wet: soaked with water
+dry: without water
+deaf: unable to hear
+numb: without feeling
+me: the one speaking
+us: all of us
+never: at no time
+always: at every time
+now: at this moment
+only: and nothing else
+none: not one
+many: a great number
+half: one of two equal parts
+beneath: underneath
+kept: held safe
+held: held fast
+starved: worn thin from hunger
+waiting: still waiting
+old: old
+new: new
+slow: slow
+deep: far down
+static: like noise on the line
+tonight: on this night
+tomorrow: on the day to come
+yesterday: on the day before
+unseen: seen by no one
+unnamed: given no name
+unanswered: with no reply
+unburied: left above the ground
+unborn: not yet born
+undone: taken apart
+untold: never told
+unwritten: never written down
+unopened: never opened
+unkept: not honored
+unbroken: still whole
+broken: in pieces
+buried: under the ground
+sealed: closed for good
+signed: bearing a name
+marked: bearing a mark
+gentle: gentle
+cruel: cruel
+kind: kind
+patient: willing to wait
+hungry: hungry
+thirsty: thirsty
+tired: tired
+weary: worn out
+young: young
+ancient: very old
+brief: lasting a short time
+endless: without end
+shallow: not deep
+narrow: not wide
+wide: wide
+sunken: gone to the bottom
+risen: come up again
+fallen: brought down
+frozen: turned to ice
+burning: on fire
+burnt: already burned
+ashen: pale as ash
+pale: with little color
+white: white
+black: black
+grey: grey
+red: red
+blue: blue
+green: green
+golden: the color of gold
+silver: the color of silver
+rusted: eaten by rust
+salted: covered in salt
+sodden: soaked through
+soaked: wet through
+bloodless: without blood
+breathless: out of breath
+nameless: without a name
+sleepless: without sleep
+homeless: without a home
+faithless: not to be trusted
+fearless: without fear
+hopeless: without hope
+motherless: without a mother
+restless: unable to rest
+wordless: without a word
+voiceless: without a voice
+shoreless: with no shore in sight
+bottomless: with no bottom
+lightless: with no light
+tideless: with no tide
+starless: with no stars
+moonless: with no moon
+deathless: never dying
+forgiven: pardoned
+forgotten: no longer remembered
+remembered: kept in mind
+promised: pledged
+owed: still due
+paid: settled in full
+unpaid: not yet settled
+listening: paying attention
+watching: keeping its eyes open
+sleeping: asleep
+dreaming: in a dream
+drowning: going under
+sinking: going down
+rising: coming up
+falling: dropping
+singing: in song
+praying: in prayer
+weeping: in tears
+breathing: still breathing
+counting: keeping count
+knocking: knocking to be let in
+calling: calling out
+answering: giving a reply
+returning: coming back
+leaving: going away
+staying: remaining
+hiding: keeping out of sight
+following: coming after
+alive: living
+inside: within
+outside: out in the open
+underneath: below it all
+above: higher up
+behind: at the back
+ahead: in front
+apart: separated
+aside: to one side
+ashore: on the land
+aground: stuck on the bottom
+adrift: floating without direction
+afloat: on the surface
+aloud: in a voice others can hear
+alight: on fire
+awash: covered by the water
+astray: off the right path
+amiss: not as it should be
+anew: all over again
+elsewhere: in some other place
+nowhere: in no place
+everywhere: in every place
+somewhere: in some place
+upward: toward the top
+downward: toward the bottom
+inward: toward the inside
+homeward: toward home
+seaward: toward the sea
+forward: toward the front
+backward: toward the back
+meanwhile: during the same time
+otherwise: in another way
+them: those others
+him: that man
+her: that woman
+yours: belonging to you
+mine: belonging to me
+ours: belonging to us
+theirs: belonging to them
+nobody: no person
+somebody: some person
+everyone: every person
+noone: no person at all
+anyone: any person
+darkness: the dark itself
+stillness: the absence of movement
+emptiness: the absence of everything
+light: bright
+midnight: at the middle of the night
+morning: at the start of the day
+undying: never ending
+unending: without an end
+unspoken: never said aloud
+unheard: heard by no one
+unknown: known to no one
+unloved: loved by no one
+unwanted: wanted by no one
+unwatched: with no one watching
+unlit: with no flame
+blessed: made holy
+cursed: under a curse
+hallowed: held sacred
+holy: sacred
+wicked: evil
+sacred: set apart as holy
+faithful: true to its word
+hollowed: emptied out
+sundered: split apart
+severed: cut off
+shorn: cut close
+bound: tied fast
+loosed: set free
+hidden: out of sight
+borrowed: not its own
+stolen: taken without leave
+given: handed over freely
+taken: carried off
+sworn: bound by oath
+spoken: said aloud
+written: set down in writing
+drifting: carried along
+waking: coming out of sleep

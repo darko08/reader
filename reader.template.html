@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>reader</title>
+<style>
+:root{color-scheme:dark;--bg:#000;--fg:#f2f2f2;--dim:#4a4a4a;--mid:#8a8a8a;--line:#222;--orange:#f7931a}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--fg)}
+body{font-family:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono","Courier New",monospace;font-size:16px;line-height:1.6}
+main{max-width:880px;margin:0 auto;padding:48px 16px 64px;display:flex;flex-direction:column;gap:36px}
+form{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+label{color:var(--mid);font-size:13px}
+input,button{font:inherit;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:0;padding:8px 12px}
+input{width:11ch;min-width:0}
+button{cursor:pointer}
+button:hover{border-color:var(--mid)}
+button[aria-pressed="true"]{border-color:var(--fg)}
+:focus-visible{outline:1px solid var(--fg);outline-offset:2px}
+[hidden]{display:none!important}
+#reading{display:flex;flex-direction:column;gap:22px;min-height:230px}
+.at{color:var(--mid);font-size:13px;overflow-wrap:anywhere}
+.silence{color:var(--dim);font-size:15px;display:flex;flex-wrap:wrap;gap:0 1ch}
+.words{font-size:clamp(22px,4.6vw,36px);line-height:1.35;display:flex;flex-wrap:wrap;gap:0 .6em;overflow-wrap:anywhere}
+.zero{color:var(--dim)}
+.sign{display:flex;gap:1.5ch;align-items:baseline}
+.sign span{color:var(--mid);font-size:13px}
+.sign b{font-weight:400;font-size:20px}
+.msg{color:var(--mid)}
+/* the orange rule: only the block counter is orange at rest; the sign flashes once per reading; the hash pulses once per new live block */
+.height{color:var(--orange)}
+@keyframes flash{0%,70%{color:var(--orange)}100%{color:inherit}}
+.sign b.flash{animation:flash 1s ease-out 1}
+.hash.pulse{animation:flash 1s ease-out 1}
+.gloss{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.gloss dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 2ch;font-size:14px}
+.gloss dt{color:var(--fg)}
+.gloss dd{margin:0;color:var(--mid)}
+.gloss dt.zero,.gloss dd.zero{color:var(--dim)}
+.gloss p{margin:0;max-width:64ch;font-size:15px}
+.gloss p.fixed{color:var(--mid);font-size:13px}
+footer{border-top:1px solid var(--line);padding-top:16px;font-size:12px;color:var(--mid);display:flex;flex-direction:column;gap:4px;overflow-wrap:anywhere}
+a{color:var(--mid)}
+a:hover{color:var(--fg)}
+</style>
+</head>
+<body>
+<main>
+  <form id="f" autocomplete="off">
+    <label for="h">block height</label>
+    <input id="h" inputmode="numeric" pattern="[0-9,. ]*" value="976509">
+    <button type="submit">read</button>
+    <button type="button" id="latest" aria-pressed="false">latest block</button>
+  </form>
+
+  <section id="reading" aria-live="polite"></section>
+
+  <footer>
+    <div>alphabet sha-256 7483a0908ea1ae4553aa7808fceb6b414433064493bff353dca19ac73cb4b957</div>
+    <div>carved at block 976,509</div>
+    <div>txid <a href="https://mempool.space/tx/224fccf84fbdbf5435f35efdcd0c8c1a5a4694612fb8f7121c8b56a6f8c1614e">224fccf84fbdbf5435f35efdcd0c8c1a5a4694612fb8f7121c8b56a6f8c1614e</a></div>
+    <div><a href="alphabet.txt">alphabet.txt</a> · <a href="reader8.py">reader8.py</a></div>
+  </footer>
+</main>
+<script>
+// 8 columns x 256 words, baked from alphabet.txt by build.py
+const COLS = /*ALPHABET*/[]/*END*/;
+// one plain English gloss per word, baked from glosses.txt by build.py
+const GLOSS = /*GLOSSES*/[]/*GEND*/;
+
+const API = 'https://mempool.space/api';
+const $ = id => document.getElementById(id);
+const out = $('reading'), input = $('h'), latestBtn = $('latest');
+const cache = new Map();           // height -> block hash
+let live = false, timer = null, shown = null, glossOpen = false, pulseNext = false;
+
+// The reading rule: leading zero hex chars are the silence,
+// the next 16 hex chars are 8 bytes, one index per column.
+function read(hash) {
+  const hex = hash.toLowerCase();
+  const silence = hex.length - hex.replace(/^0+/, '').length;
+  const body = hex.slice(silence, silence + 16).padEnd(16, '0');
+  const idx = [];
+  for (let i = 0; i < 8; i++) idx.push(parseInt(body.slice(i * 2, i * 2 + 2), 16) % 256);
+  const words = idx.map((n, c) => (COLS[c] && COLS[c][n]) || null);
+  return { silence, idx, words };
+}
+
+function el(tag, cls, text) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  return e;
+}
+
+// "what does it say": fixed glosses stitched together, no model involved
+function glossBox(r) {
+  const box = el('div', 'gloss');
+  const btn = el('button', null, 'what does it say');
+  btn.type = 'button';
+  const body = el('div', 'gloss');
+  const dl = el('dl');
+  const g = r.idx.map((n, c) => GLOSS[c][n]);
+  r.words.forEach((w, c) => {
+    const z = r.idx[c] === 0 ? 'zero' : null;
+    dl.append(el('dt', z, w), el('dd', z, g[c]));
+  });
+  const part = c => (r.idx[c] === 0 ? '…' : g[c]);
+  let line = [0, 1, 2, 3].map(part).join(' ') + ', ' + [4, 5, 6].map(part).join(' ') + ', ' + part(7) + '.';
+  line = line.charAt(0).toUpperCase() + line.slice(1);
+  body.append(dl, el('p', null, line),
+    el('p', 'fixed', 'The words were fixed before this block was read. The meaning is yours.'));
+  body.hidden = !glossOpen;
+  btn.setAttribute('aria-expanded', String(glossOpen));
+  btn.addEventListener('click', () => {
+    glossOpen = !glossOpen;
+    body.hidden = !glossOpen;
+    btn.setAttribute('aria-expanded', String(glossOpen));
+  });
+  box.append(btn, body);
+  return box;
+}
+
+function say(text) { out.replaceChildren(el('div', 'msg', text)); }
+
+function render(height, hash) {
+  const r = read(hash);
+  const baked = r.words.every(Boolean);
+  const at = el('div', 'at');
+  at.append(el('span', 'height', height.toLocaleString('en-US')), ' · ', el('span', pulseNext ? 'hash pulse' : 'hash', hash));
+  pulseNext = false;
+  const sil = el('div', 'silence');
+  for (let i = 0; i < r.silence; i++) sil.append(el('span', null, 'quiet'));
+  const words = el('div', 'words');
+  (baked ? r.words : r.idx.map(String)).forEach((w, c) => words.append(el('span', r.idx[c] === 0 ? 'zero' : null, w)));
+  const sign = el('div', 'sign');
+  sign.append(el('span', null, 'sign'), el('b', r.idx[0] === 0 ? 'zero flash' : 'flash', baked ? r.words[0] : String(r.idx[0])));
+  out.replaceChildren(at, sil, words, sign);
+  if (baked && GLOSS.length === 8) out.append(glossBox(r));
+  if (!baked) out.append(el('div', 'msg', 'alphabet not baked in: showing column indices'));
+  shown = height;
+}
+
+async function text(url) {
+  const res = await fetch(url, { cache: 'no-store' });
+  if (!res.ok) throw new Error(res.status === 404 ? 'no such block yet' : 'mempool.space answered ' + res.status);
+  return (await res.text()).trim();
+}
+
+async function hashAt(height) {
+  if (cache.has(height)) return cache.get(height);
+  const hash = await text(API + '/block-height/' + height);
+  if (!/^[0-9a-f]{64}$/i.test(hash)) throw new Error('unexpected answer from mempool.space');
+  cache.set(height, hash);
+  return hash;
+}
+
+async function show(height) {
+  if (shown === null) say('reading…');
+  try { render(height, await hashAt(height)); }
+  catch (e) { say(e.message || 'could not reach mempool.space'); }
+}
+
+async function tick() {
+  try {
+    const tip = parseInt(await text(API + '/blocks/tip/height'), 10);
+    if (!live || isNaN(tip)) return;
+    if (tip !== shown) { pulseNext = shown !== null; input.value = tip; await show(tip); }
+  } catch (e) { if (shown === null) say('could not reach mempool.space'); }
+}
+
+function setLive(on) {
+  live = on;
+  latestBtn.setAttribute('aria-pressed', String(on));
+  clearInterval(timer);
+  if (on) { tick(); timer = setInterval(tick, 20000); }
+}
+
+$('f').addEventListener('submit', e => {
+  e.preventDefault();
+  setLive(false);
+  const height = parseInt(input.value.replace(/[^0-9]/g, ''), 10);
+  if (isNaN(height)) { say('enter a block height'); return; }
+  shown = null;
+  show(height);
+});
+latestBtn.addEventListener('click', () => { shown = null; setLive(true); });
+
+show(976509);
+</script>
+</body>
+</html>

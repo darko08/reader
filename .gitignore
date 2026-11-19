@@ -1,0 +1,23 @@
+.DS_Store
+__pycache__/
+hashes.txt
+hits.csv
+hits8.csv
+
+# never commit wallets, seeds or keys
+wallet*
+*.wallet
+*.dat
+*.psbt
+*seed*
+*mnemonic*
+*.key
+*.pem
+*xprv*
+*privkey*
+*private-key*
+*private_key*
+.env
+.env.*
+*.keystore
+descriptor*
