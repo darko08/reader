@@ -42,6 +42,8 @@ button[aria-pressed="true"]{border-color:var(--fg)}
 .gloss p.fixed{color:var(--mid);font-size:13px}
 footer{border-top:1px solid var(--line);padding-top:16px;font-size:12px;color:var(--mid);display:flex;flex-direction:column;gap:4px;overflow-wrap:anywhere}
 a{color:var(--mid)}
+.nav{font-size:13px;margin-left:auto;text-decoration:none}
+.nav:hover{text-decoration:underline}
 a:hover{color:var(--fg)}
 </style>
 </head>
@@ -52,6 +54,7 @@ a:hover{color:var(--fg)}
     <input id="h" inputmode="numeric" pattern="[0-9,. ]*" value="976509">
     <button type="submit">read</button>
     <button type="button" id="latest" aria-pressed="false">latest block</button>
+    <a class="nav" href="day.html">a whole day</a>
   </form>
 
   <section id="reading" aria-live="polite"></section>
@@ -187,7 +190,15 @@ $('f').addEventListener('submit', e => {
 });
 latestBtn.addEventListener('click', () => { shown = null; setLive(true); });
 
-show(976509);
+// a link such as reader.html#810383 opens on that block
+function fromHash() {
+  const m = /^#(\d{1,8})$/.exec(location.hash);
+  if (!m) return false;
+  setLive(false); input.value = m[1]; shown = null; show(parseInt(m[1], 10));
+  return true;
+}
+addEventListener('hashchange', fromHash);
+if (!fromHash()) show(976509);
 </script>
 </body>
 </html>

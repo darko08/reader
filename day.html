@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>reader · day</title>
+<style>
+:root{color-scheme:dark;--bg:#000;--fg:#f2f2f2;--dim:#4a4a4a;--mid:#8a8a8a;--line:#222}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--bg);color:var(--fg)}
+body{font-family:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono","Courier New",monospace;font-size:16px;line-height:1.6}
+main{max-width:880px;margin:0 auto;padding:48px 16px 64px;display:flex;flex-direction:column;gap:36px}
+form{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+label{color:var(--mid);font-size:13px}
+input,button{font:inherit;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:0;padding:8px 12px}
+input{min-width:0}
+button{cursor:pointer}
+button:hover{border-color:var(--mid)}
+:focus-visible{outline:1px solid var(--fg);outline-offset:2px}
+a{color:inherit;text-decoration:none}
+a:hover{text-decoration:underline}
+.nav{color:var(--mid);font-size:13px;margin-left:auto}
+#day{display:flex;flex-direction:column;gap:40px;min-height:230px}
+.at,.msg{color:var(--mid);font-size:13px}
+.msg{font-size:16px}
+section{display:flex;flex-direction:column;gap:14px}
+h2{margin:0;font-size:13px;font-weight:400;color:var(--mid)}
+.whisper{display:flex;flex-wrap:wrap;gap:0 1ch;font-size:15px;color:var(--mid)}
+.whisper a:hover{color:var(--fg)}
+.picks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.picks li{display:grid;grid-template-columns:6ch minmax(0,1fr);gap:0 2ch}
+.picks time{color:var(--mid);font-size:13px;padding-top:.35em}
+.picks a{font-size:clamp(17px,2.6vw,21px);line-height:1.4;overflow-wrap:anywhere}
+.picks small{grid-column:2;color:var(--dim);font-size:12px}
+.zero{color:var(--dim)}
+.note{color:var(--mid);font-size:12px;max-width:68ch;margin:0}
+.piece{display:flex;flex-direction:column;gap:4px;font-size:clamp(18px,3vw,24px);line-height:1.45}
+.piece a{overflow-wrap:anywhere}
+footer{border-top:1px solid var(--line);padding-top:16px;font-size:12px;color:var(--mid);display:flex;flex-direction:column;gap:4px;overflow-wrap:anywhere}
+footer a{text-decoration:underline}
+footer a:hover{color:var(--fg)}
+</style>
+</head>
+<body>
+<main>
+  <form id="f" autocomplete="off">
+    <label for="d">day (UTC)</label>
+    <input id="d" type="date" min="2009-01-03" required>
+    <button type="submit">read the day</button>
+    <a class="nav" href="reader.html">one block</a>
+  </form>
+
+  <div id="day" aria-live="polite"></div>
+
+  <footer>
+    <div>alphabet sha-256 7483a0908ea1ae4553aa7808fceb6b414433064493bff353dca19ac73cb4b957</div>
+    <div>carved at block 976,509</div>
+    <div>txid <a href="https://mempool.space/tx/224fccf84fbdbf5435f35efdcd0c8c1a5a4694612fb8f7121c8b56a6f8c1614e">224fccf84fbdbf5435f35efdcd0c8c1a5a4694612fb8f7121c8b56a6f8c1614e</a></div>
+    <div><a href="alphabet.txt">alphabet.txt</a> · <a href="reader8.py">reader8.py</a> · <a href="score8.py">score8.py</a></div>
+  </footer>
+</main>
+<script>
+// baked by build.py: the 8 columns from alphabet.txt, and the scorer's word tags and sets
+const COLS = [["quiet","bucket","box","spoon","cup","bowl","ladder","chest","oar","mast","sail","clock","compass","needle","bread","wick","we","you","i","they","she","he","it","maker","reader","diver","probe","tender","tenth","mother","father","child","ghost","stranger","keeper","sleeper","miner","sailor","widow","daughter","son","brother","sister","elder","pilot","warden","drowned","starved","bride","twin","orphan","beggar","fisher","ferryman","priest","witness","thief","singer","mourner","swimmer","digger","watchman","healer","midwife","smith","weaver","hunter","hand","eye","mouth","hunger","bone","blood","heart","skin","tooth","throat","lung","spine","skull","tongue","ear","finger","body","face","shoulder","knee","breath","pulse","rib","heel","hair","wrist","jaw","palm","vein","belly","lip","salt","tide","sea","wave","current","undertow","brine","flood","well","rain","ice","mist","foam","silt","reef","shore","harbor","anchor","rope","net","keel","hull","pressure","water","river","storm","frost","snow","wind","spray","kelp","eel","crab","whale","gull","pearl","shell","coral","lamp","dark","ember","glass","shadow","fire","smoke","ash","spark","candle","moon","star","dawn","dusk","night","morning","lantern","mirror","gold","light","flame","answer","call","name","key","word","silence","promise","lie","song","prayer","secret","letter","story","question","echo","voice","cry","oath","debt","law","vow","whisper","chronicle","imprint","sign","mark","static","memory","rumor","psalm","hymn","curse","riddle","verse","grief","sorrow","shame","hope","faith","longing","stone","layer","door","wreck","surface","bottom","wall","gate","bridge","tower","stair","cave","mine","shaft","chamber","vault","grave","garden","room","fear","greed","mercy","rust","iron","chain","year","hour","day","winter","home","sleep","dream","weight","bell","coin","ring","thread","cloth","nail","wax","oil","ink","map","knife","hook","wheel","cradle","coffin","boat","ship","veil","moth","root","seed","lamb","ox","choir","flock","kin"],["quiet","drifted","drowned","sank","floated","swam","slept","woke","burned","opened","closed","gave","took","went","came","waited","remembered","forgot","fell","rose","dug","carried","kept","lost","found","held","heard","saw","spoke","wrote","broke","mended","sealed","followed","returned","left","stayed","hid","watched","dreamed","knocked","listened","buried","drank","answered","called","named","lied","cried","feared","marked","signed","flooded","starved","whispered","promised","echoed","wept","begged","breathed","choked","froze","shook","bled","turned","carved","owed","knelt","climbed","descended","asked","hungered","dimmed","rusted","wore","loved","hoped","lit","sold","stole","sent","tasted","touched","hummed","sighed","slipped","tore","bound","nailed","drew","emptied","filled","swore","sang","prayed","counted","washed","soaked","rotted","swayed","swept","spilled","poured","gathered","scattered","wandered","lingered","vanished","surfaced","settled","hardened","softened","darkened","kindled","smothered","dragged","hauled","lifted","lowered","pulled","pushed","pressed","crushed","cracked","shattered","melted","thawed","boiled","cooled","warmed","shivered","trembled","stirred","rocked","cradled","nursed","fed","ate","swallowed","spat","bit","chewed","kissed","blessed","cursed","forgave","judged","punished","paid","borrowed","lent","traded","bought","won","failed","confessed","denied","betrayed","trusted","doubted","believed","knew","learned","taught","guessed","measured","weighed","mourned","grieved","laughed","smiled","screamed","sobbed","howled","moaned","groaned","murmured","chanted","tolled","rang","struck","wounded","healed","stitched","sewed","wove","spun","knotted","tied","locked","unlocked","wrapped","covered","sought","searched","hunted","chased","fled","ran","walked","crawled","bowed","stood","sat","laid","rested","dwelt","lived","died","killed","saved","rescued","guarded","sheltered","welcomed","refused","obeyed","commanded","summoned","invited","married","bore","raised","grew","shrank","swelled","faded","glowed","shone","flickered","blinked","stared","gazed","looked","noticed","sensed","felt","smelled","ached","thirsted","wished","wanted","needed","missed","meant","sailed","rowed","moored","dove","plunged","sounded","hollowed","deepened","widened","narrowed","folded"],["quiet","the","a","no","every","all","your","my","our","his","her","their","into","under","through","below","beneath","past","toward","from","with","beyond","behind","above","across","inside","over","between","of","to","in","locket","rosary","ribbon","shroud","wreath","mask","crown","scale","fin","gill","amber","lock","horn","tusk","antler","pelt","fleece","maker","reader","diver","probe","tender","tenth","mother","father","child","ghost","stranger","keeper","sleeper","miner","sailor","widow","daughter","son","brother","sister","elder","pilot","warden","drowned","starved","bride","twin","orphan","beggar","fisher","ferryman","priest","witness","thief","singer","mourner","swimmer","digger","watchman","healer","midwife","smith","weaver","hunter","hand","eye","mouth","hunger","bone","blood","heart","skin","tooth","throat","lung","spine","skull","tongue","ear","finger","body","face","shoulder","knee","breath","pulse","rib","heel","hair","wrist","jaw","palm","vein","belly","lip","salt","tide","sea","wave","current","undertow","brine","flood","well","rain","ice","mist","foam","silt","reef","shore","harbor","anchor","rope","net","keel","hull","pressure","water","river","storm","frost","snow","wind","spray","kelp","eel","crab","whale","gull","pearl","shell","coral","lamp","dark","ember","glass","shadow","fire","smoke","ash","spark","candle","moon","star","dawn","dusk","night","morning","lantern","mirror","gold","light","flame","answer","call","name","key","word","silence","promise","lie","song","prayer","secret","letter","story","question","echo","voice","cry","oath","debt","law","vow","whisper","chronicle","imprint","sign","mark","static","memory","rumor","psalm","hymn","curse","riddle","verse","grief","sorrow","shame","hope","faith","longing","fear","greed","mercy","rust","iron","chain","year","hour","day","winter","home","sleep","dream","weight","one","two","three","nine","ten","none","bell","coin","ring","thread","nail","ink","knife","hook","wheel","cradle","coffin","boat","ship","veil"],["quiet","one","two","three","nine","ten","none","wreck","surface","bottom","wall","gate","room","bridge","tower","stair","cave","mine","shaft","chamber","vault","grave","garden","harbor","shore","reef","hull","keel","well","house","home","church","field","city","road","window","floor","door","threshold","layer","depth","seabed","trench","pit","cellar","basin","bed","boat","ship","dark","deep","sea","tide","water","ice","mist","night","attic","altar","abyss","bay","beach","belfry","bog","cabin","canal","cape","chapel","chasm","cliff","cloister","coast","court","crypt","delta","den","dock","dune","estuary","forge","fountain","furnace","gallery","gorge","grotto","gulf","gutter","hall","hearth","hill","hold","hollow","island","jetty","kitchen","labyrinth","lagoon","landing","lane","larder","lighthouse","loft","marsh","meadow","mill","moat","monastery","mooring","narrows","nave","orchard","oven","parlor","passage","pasture","pier","pool","porch","prison","quarry","quay","rampart","ravine","reservoir","ridge","river","rock","roof","ruin","sanctuary","sandbar","school","shallows","shed","shelf","shrine","sluice","sound","spring","square","stable","steeple","strait","stream","street","swamp","tavern","temple","terrace","thicket","tomb","tunnel","undercroft","valley","vestry","village","vineyard","wharf","yard","abbey","aqueduct","archive","bath","barrow","berth","bilge","cistern","drain","ferry","font","gallows","hatch","hive","inn","kiln","lake","library","nest","orphanage","outpost","pantry","pen","pew","pulpit","rafters","stern","womb","cradle","coffin","crossroads","graveyard","churchyard","boathouse","bellhouse","saltworks","shipyard","cemetery","hospital","asylum","station","lowlands","highlands","bedrock","seafloor","riverbed","shoreline","coastline","horizon","underworld","deepwater","backwater","millpond","bathhouse","washhouse","storehouse","warehouse","lockhouse","gatehouse","seawall","breakwater","galley","chancel","ford","inlet","cove","creek","fjord","sinkhole","sump","adit","stope","causeway","dyke","levee","weir","floodplain","tidepool","rockpool","foreshore","mudflat","saltmarsh","sandbank","shoal","hut","hovel","cottage","manor","palace","castle","dungeon","cell","ward","nursery","ossuary","catacomb","mausoleum"],["quiet","and","but","so","until","when","while","because","where","as","then","before","after","till","yet","or","if","though","since","once","not","never","always","again","is","was","were","will","who","what","nor","for","although","unless","whether","whereas","whenever","wherever","whoever","whatever","however","therefore","thus","hence","meanwhile","still","also","too","even","only","just","ever","soon","later","now","here","there","thence","whence","hither","thither","below","above","beneath","under","over","through","across","along","among","amid","around","about","against","toward","towards","into","onto","upon","within","without","beyond","behind","beside","besides","between","betwixt","past","near","inside","outside","throughout","underneath","alongside","despite","except","like","unlike","than","would","could","should","might","must","shall","may","can","cannot","did","does","do","has","had","have","being","been","be","whom","whose","which","that","this","these","those","the","a","an","no","every","each","all","some","any","both","either","neither","such","of","to","in","on","at","by","from","with","almost","nearly","hardly","scarcely","barely","perhaps","maybe","surely","indeed","rather","quite","very","lest","ere","whilst","albeit","yonder","anon","nay","yea","aye","oh","alas","o","hush","hark","lo","behold","amen","thereafter","therein","thereby","wherein","whereby","whereupon","drift","drown","sink","float","swim","sleep","wake","burn","open","close","give","take","go","come","wait","remember","forget","fall","rise","dig","carry","keep","lose","find","hold","hear","see","speak","write","break","mend","seal","follow","return","leave","stay","hide","watch","dream","knock","listen","bury","drink","answer","call","name","lie","cry","fear","mark","sign","flood","whisper","promise","echo","hunger","rust","light","empty","surface","hollow","starve","weep","beg","breathe","choke","freeze","shake","bleed","turn","carve","owe","kneel","climb","descend","ask"],["quiet","captain","uncle","aunt","grandmother","grandfather","husband","wife","infant","boy","girl","neighbor","guest","servant","master","mistress","shepherd","ploughman","sexton","gravedigger","undertaker","nun","monk","abbot","bishop","deacon","crew","lookout","helmsman","navigator","harpooner","whaler","soldier","sentry","guard","drummer","piper","fiddler","poet","judge","jailer","prisoner","exile","pilgrim","wanderer","traveler","messenger","herald","king","queen","prince","princess","lord","lady","heir","widower","foundling","changeling","saint","martyr","prophet","oracle","seer","witch","hermit","fool","liar","debtor","creditor","congregation","lamplighter","stepmother","godmother","nurse","matron","governess","beadle","bailiff","coroner","magistrate","constable","vagrant","drifter","castaway","stowaway","mutineer","smuggler","wrecker","salvager","lightkeeper","fishwife","oysterman","cockler","mudlark","cabinboy","fisherman","dog","hound","cat","horse","mare","foal","cow","calf","goat","ram","ewe","pig","hen","rooster","crow","raven","rook","owl","heron","swan","cormorant","gannet","tern","petrel","albatross","seal","otter","herring","cod","mackerel","lobster","oyster","mussel","limpet","barnacle","jellyfish","octopus","squid","shark","worm","spider","rat","bat","fox","wolf","hare","deer","mole","toad","frog","wren","lark","sparrow","robin","magpie","plover","curlew","sandpiper","kittiwake","puffin","shearwater","skua","osprey","kestrel","hawk","falcon","eagle","bittern","lapwing","nightjar","dolphin","porpoise","orca","narwhal","walrus","stingray","shrimp","prawn","starfish","urchin","anemone","lamprey","rainstorm","downpour","cloudburst","blizzard","snowstorm","hailstorm","thunderhead","monsoon","typhoon","hurricane","cyclone","whirlwind","zephyr","haze","rime","hoarfrost","flurry","deluge","torrent","spindrift","haar","rainbow","aurora","joy","pity","patience","wrath","envy","pride","despair","dread","awe","guilt","regret","honor","glory","peace","omen","fate","luck","chance","fortune","hush","absence","presence","distance","thirst","famine","plague","fever","sickness","cure","remedy","rage","mirth","folly","fog","cloud","thunder","lightning","hail","sleet","dew","drizzle","squall","gale","breeze","tempest","ripple","eddy","whirlpool","sand","pebble","shingle","mud","wound","scar","bruise"],["quiet","cooled","warmed","shivered","trembled","stirred","rocked","cradled","nursed","fed","ate","swallowed","spat","bit","chewed","kissed","blessed","cursed","forgave","judged","punished","paid","borrowed","lent","traded","bought","won","failed","confessed","denied","betrayed","trusted","doubted","believed","knew","learned","taught","guessed","measured","weighed","mourned","grieved","laughed","smiled","screamed","sobbed","howled","moaned","groaned","murmured","chanted","tolled","rang","struck","wounded","healed","stitched","sewed","wove","spun","knotted","tied","locked","unlocked","wrapped","covered","sought","searched","hunted","chased","fled","ran","walked","crawled","bowed","stood","sat","laid","rested","dwelt","lived","died","killed","saved","rescued","guarded","sheltered","welcomed","refused","obeyed","commanded","summoned","invited","married","bore","raised","grew","shrank","swelled","faded","glowed","shone","flickered","blinked","stared","gazed","looked","noticed","sensed","felt","smelled","ached","thirsted","wished","wanted","needed","missed","meant","sailed","rowed","moored","dove","plunged","sounded","hollowed","deepened","widened","narrowed","folded","dripped","paused","waded","rinsed","drifted","drowned","sank","floated","swam","slept","woke","burned","opened","closed","gave","took","went","came","waited","remembered","forgot","fell","rose","dug","carried","kept","lost","found","held","heard","saw","spoke","wrote","broke","mended","sealed","followed","returned","left","stayed","hid","watched","dreamed","knocked","listened","buried","drank","answered","called","named","lied","cried","feared","marked","signed","flooded","starved","whispered","promised","echoed","wept","begged","breathed","choked","froze","shook","bled","turned","carved","owed","knelt","climbed","descended","asked","hungered","dimmed","rusted","wore","loved","hoped","lit","sold","stole","sent","tasted","touched","hummed","sighed","slipped","tore","bound","nailed","drew","emptied","filled","swore","sang","prayed","counted","washed","soaked","rotted","swayed","swept","spilled","poured","gathered","scattered","wandered","lingered","vanished","surfaced","settled","hardened","softened","darkened","kindled","smothered","dragged","hauled","lifted","lowered","pulled","pushed","pressed","crushed","cracked"],["quiet","cold","again","alone","below","deeper","home","forever","still","back","down","away","here","there","once","twice","slowly","together","last","first","dead","asleep","awake","empty","heavy","hollow","silent","open","closed","drowned","lost","found","salt","dark","dust","nothing","everything","gold","ever","too","late","early","long","whole","bare","blind","far","near","low","soft","wet","dry","deaf","numb","me","us","never","always","now","only","none","many","half","beneath","kept","held","starved","waiting","old","new","slow","deep","static","tonight","tomorrow","yesterday","unseen","unnamed","unanswered","unburied","unborn","undone","untold","unwritten","unopened","unkept","unbroken","broken","buried","sealed","signed","marked","gentle","cruel","kind","patient","hungry","thirsty","tired","weary","young","ancient","brief","endless","shallow","narrow","wide","sunken","risen","fallen","frozen","burning","burnt","ashen","pale","white","black","grey","red","blue","green","golden","silver","rusted","salted","sodden","soaked","bloodless","breathless","nameless","sleepless","homeless","faithless","fearless","hopeless","motherless","restless","wordless","voiceless","shoreless","bottomless","lightless","tideless","starless","moonless","deathless","forgiven","forgotten","remembered","promised","owed","paid","unpaid","listening","watching","sleeping","dreaming","drowning","sinking","rising","falling","singing","praying","weeping","breathing","counting","knocking","calling","answering","returning","leaving","staying","hiding","following","alive","inside","outside","underneath","above","behind","ahead","apart","aside","ashore","aground","adrift","afloat","aloud","alight","awash","astray","amiss","anew","elsewhere","nowhere","everywhere","somewhere","upward","downward","inward","homeward","seaward","forward","backward","meanwhile","otherwise","them","him","her","yours","mine","ours","theirs","nobody","somebody","everyone","noone","anyone","darkness","stillness","emptiness","light","midnight","morning","undying","unending","unspoken","unheard","unknown","unloved","unwanted","unwatched","unlit","blessed","cursed","hallowed","holy","wicked","sacred","faithful","hollowed","sundered","severed","shorn","bound","loosed","hidden","borrowed","stolen","given","taken","sworn","spoken","written","drifting","waking"]];
+const TAGS = {"a":"C","abbey":"N","abbot":"N","about":"C","above":"JC","absence":"N","abyss":"N","ached":"V","across":"C","adit":"N","adrift":"J","afloat":"J","after":"C","again":"MJC","against":"C","aground":"J","ahead":"J","alas":"C","albatross":"N","albeit":"C","alight":"J","alive":"J","all":"C","almost":"C","alone":"J","along":"C","alongside":"C","aloud":"J","also":"C","altar":"N","although":"C","always":"MJC","amber":"N","amen":"C","amid":"C","amiss":"J","among":"C","an":"C","anchor":"N","ancient":"J","and":"C","anemone":"N","anew":"J","anon":"C","answer":"NV","answered":"V","answering":"J","antler":"N","any":"C","anyone":"J","apart":"J","aqueduct":"N","archive":"N","around":"C","as":"C","ash":"N","ashen":"J","ashore":"J","aside":"J","ask":"V","asked":"V","asleep":"J","astray":"J","asylum":"N","at":"C","ate":"V","attic":"N","aunt":"N","aurora":"N","awake":"J","awash":"J","away":"J","awe":"N","aye":"C","back":"J","backward":"J","backwater":"N","bailiff":"N","bare":"J","barely":"C","barnacle":"N","barrow":"N","basin":"N","bat":"N","bath":"N","bathhouse":"N","bay":"N","be":"C","beach":"N","beadle":"N","because":"C","bed":"N","bedrock":"N","been":"C","before":"C","beg":"V","beggar":"N","begged":"V","behind":"JC","behold":"C","being":"C","belfry":"N","believed":"V","bell":"N","bellhouse":"N","belly":"N","below":"JC","beneath":"JC","berth":"N","beside":"C","besides":"C","betrayed":"V","between":"C","betwixt":"C","beyond":"C","bilge":"N","bishop":"N","bit":"V","bittern":"N","black":"J","bled":"V","bleed":"V","blessed":"VJ","blind":"J","blinked":"V","blizzard":"N","blood":"N","bloodless":"J","blue":"J","boat":"N","boathouse":"N","body":"N","bog":"N","boiled":"V","bone":"N","bore":"V","borrowed":"VJ","both":"C","bottom":"N","bottomless":"J","bought":"V","bound":"VJ","bowed":"V","bowl":"N","box":"N","boy":"N","bread":"N","break":"V","breakwater":"N","breath":"N","breathe":"V","breathed":"V","breathing":"J","breathless":"J","breeze":"N","bride":"N","bridge":"N","brief":"J","brine":"N","broke":"V","broken":"J","brother":"N","bruise":"N","bucket":"N","buried":"VJ","burn":"V","burned":"V","burning":"J","burnt":"J","bury":"V","but":"C","by":"C","cabin":"N","cabinboy":"N","calf":"N","call":"NV","called":"V","calling":"J","came":"V","can":"C","canal":"N","candle":"N","cannot":"C","cape":"N","captain":"N","carried":"V","carry":"V","carve":"V","carved":"V","castaway":"N","castle":"N","cat":"N","catacomb":"N","causeway":"N","cave":"N","cell":"N","cellar":"N","cemetery":"N","chain":"N","chamber":"N","chance":"N","chancel":"N","changeling":"N","chanted":"V","chapel":"N","chased":"V","chasm":"N","chest":"N","chewed":"V","child":"N","choir":"N","choke":"V","choked":"V","chronicle":"N","church":"N","churchyard":"N","cistern":"N","city":"N","cliff":"N","climb":"V","climbed":"V","clock":"N","cloister":"N","close":"V","closed":"VJ","cloth":"N","cloud":"N","cloudburst":"N","coast":"N","coastline":"N","cockler":"N","cod":"N","coffin":"N","coin":"N","cold":"J","come":"V","commanded":"V","compass":"N","confessed":"V","congregation":"N","constable":"N","cooled":"V","coral":"N","cormorant":"N","coroner":"N","cottage":"N","could":"C","counted":"V","counting":"J","court":"N","cove":"N","covered":"V","cow":"N","crab":"N","cracked":"V","cradle":"N","cradled":"V","crawled":"V","creditor":"N","creek":"N","crew":"N","cried":"V","crossroads":"N","crow":"N","crown":"N","cruel":"J","crushed":"V","cry":"NV","crypt":"N","cup":"N","cure":"N","curlew":"N","current":"N","curse":"N","cursed":"VJ","cyclone":"N","dark":"NJ","darkened":"V","darkness":"J","daughter":"N","dawn":"N","day":"N","deacon":"N","dead":"J","deaf":"J","deathless":"J","debt":"N","debtor":"N","deep":"NJ","deepened":"V","deeper":"J","deepwater":"N","deer":"N","delta":"N","deluge":"N","den":"N","denied":"V","depth":"N","descend":"V","descended":"V","despair":"N","despite":"C","dew":"N","did":"C","died":"V","dig":"V","digger":"N","dimmed":"V","distance":"N","diver":"N","do":"C","dock":"N","does":"C","dog":"N","dolphin":"N","door":"N","doubted":"V","dove":"V","down":"J","downpour":"N","downward":"J","dragged":"V","drain":"N","drank":"V","dread":"N","dream":"NV","dreamed":"V","dreaming":"J","drew":"V","drift":"V","drifted":"V","drifter":"N","drifting":"J","drink":"V","dripped":"V","drizzle":"N","drown":"V","drowned":"NVJ","drowning":"J","drummer":"N","dry":"J","dug":"V","dune":"N","dungeon":"N","dusk":"N","dust":"NJ","dwelt":"V","dyke":"N","each":"C","eagle":"N","ear":"N","early":"J","echo":"NV","echoed":"V","eddy":"N","eel":"N","either":"C","elder":"N","elsewhere":"J","ember":"N","emptied":"V","emptiness":"J","empty":"VJ","endless":"J","envy":"N","ere":"C","estuary":"N","even":"C","ever":"JC","every":"C","everyone":"J","everything":"J","everywhere":"J","ewe":"N","except":"C","exile":"N","eye":"N","face":"N","faded":"V","failed":"V","faith":"N","faithful":"J","faithless":"J","falcon":"N","fall":"V","fallen":"J","falling":"J","famine":"N","far":"J","fate":"N","father":"N","fear":"NV","feared":"V","fearless":"J","feather":"N","fed":"V","fell":"V","felt":"V","ferry":"N","ferryman":"N","fever":"N","fiddler":"N","field":"N","filled":"V","fin":"N","find":"V","finger":"N","fire":"N","first":"J","fisher":"N","fisherman":"N","fishwife":"N","fjord":"N","flame":"N","fled":"V","fleece":"N","flickered":"V","float":"V","floated":"V","flock":"N","flood":"NV","flooded":"V","floodplain":"N","floor":"N","flurry":"N","foal":"N","foam":"N","fog":"N","folded":"V","follow":"V","followed":"V","following":"J","folly":"N","font":"N","fool":"N","for":"C","ford":"N","foreshore":"N","forever":"J","forgave":"V","forge":"N","forget":"V","forgiven":"J","forgot":"V","forgotten":"J","fortune":"N","forward":"J","found":"VJ","foundling":"N","fountain":"N","fox":"N","freeze":"V","frog":"N","from":"C","frost":"N","froze":"V","frozen":"J","furnace":"N","gale":"N","gallery":"N","galley":"N","gallows":"N","gannet":"N","garden":"N","gate":"N","gatehouse":"N","gathered":"V","gave":"V","gazed":"V","gentle":"J","ghost":"N","gill":"N","girl":"N","give":"V","given":"J","glass":"N","glory":"N","glowed":"V","go":"V","goat":"N","godmother":"N","gold":"NJ","golden":"J","gorge":"N","governess":"N","grandfather":"N","grandmother":"N","grave":"N","gravedigger":"N","graveyard":"N","greed":"N","green":"J","grew":"V","grey":"J","grief":"N","grieved":"V","groaned":"V","grotto":"N","guard":"N","guarded":"V","guessed":"V","guest":"N","guilt":"N","gulf":"N","gull":"N","gutter":"N","haar":"N","had":"C","hail":"N","hailstorm":"N","hair":"N","half":"J","hall":"N","hallowed":"J","hand":"N","harbor":"N","hardened":"V","hardly":"C","hare":"N","hark":"C","harpooner":"N","has":"C","hatch":"N","hauled":"V","have":"C","hawk":"N","haze":"N","he":"P","healed":"V","healer":"N","hear":"V","heard":"V","heart":"N","hearth":"N","heavy":"J","heel":"N","heir":"N","held":"VJ","helmsman":"N","hen":"N","hence":"C","her":"JC","herald":"N","here":"JC","hermit":"N","heron":"N","herring":"N","hid":"V","hidden":"J","hide":"V","hiding":"J","highlands":"N","hill":"N","him":"J","his":"C","hither":"C","hive":"N","hoarfrost":"N","hold":"NV","hollow":"NVJ","hollowed":"VJ","holy":"J","home":"NJ","homeless":"J","homeward":"J","honor":"N","hook":"N","hope":"N","hoped":"V","hopeless":"J","horizon":"N","horn":"N","horse":"N","hospital":"N","hound":"N","hour":"N","house":"N","hovel":"N","however":"C","howled":"V","hull":"N","hummed":"V","hunger":"NV","hungered":"V","hungry":"J","hunted":"V","hunter":"N","hurricane":"N","husband":"N","hush":"NC","hut":"N","hymn":"N","i":"P","ice":"N","if":"C","imprint":"NV","in":"C","indeed":"C","infant":"N","ink":"N","inlet":"N","inn":"N","inside":"JC","into":"C","invited":"V","inward":"J","iron":"N","is":"XC","island":"N","it":"P","jailer":"N","jaw":"N","jellyfish":"N","jetty":"N","joy":"N","judge":"N","judged":"V","just":"C","keel":"N","keep":"V","keeper":"N","kelp":"N","kept":"VJ","kestrel":"N","key":"N","killed":"V","kiln":"N","kin":"N","kind":"J","kindled":"V","king":"N","kissed":"V","kitchen":"N","kittiwake":"N","knee":"N","kneel":"V","knelt":"V","knew":"V","knife":"N","knock":"V","knocked":"V","knocking":"J","knotted":"V","labyrinth":"N","ladder":"N","lady":"N","lagoon":"N","laid":"V","lake":"N","lamb":"N","lamp":"N","lamplighter":"N","lamprey":"N","landing":"N","lane":"N","lantern":"N","lapwing":"N","larder":"N","lark":"N","last":"J","late":"J","later":"C","laughed":"V","law":"N","layer":"N","learned":"V","leave":"V","leaving":"J","left":"V","lent":"V","lest":"C","letter":"N","levee":"N","liar":"N","library":"N","lie":"NV","lied":"V","lifted":"V","light":"NVJ","lighthouse":"N","lightkeeper":"N","lightless":"J","lightning":"N","like":"C","limpet":"N","lingered":"V","lip":"N","listen":"V","listened":"V","listening":"J","lit":"V","lived":"V","lo":"C","lobster":"N","lock":"N","locked":"V","locket":"N","lockhouse":"N","loft":"N","long":"J","longing":"N","looked":"V","lookout":"N","loosed":"J","lord":"N","lose":"V","lost":"VJ","loved":"V","low":"J","lowered":"V","lowlands":"N","luck":"N","lung":"N","mackerel":"N","magistrate":"N","magpie":"N","maker":"N","manor":"N","many":"J","map":"N","mare":"N","mark":"NV","marked":"VJ","married":"V","marsh":"N","martyr":"N","mask":"N","mast":"N","master":"N","matron":"N","mausoleum":"N","may":"C","maybe":"C","me":"PJ","meadow":"N","meant":"V","meanwhile":"JC","measured":"V","melted":"V","memory":"N","mend":"V","mended":"V","mercy":"N","messenger":"N","midnight":"J","midwife":"N","might":"C","mill":"N","millpond":"N","mine":"NJ","miner":"N","mirror":"N","mirth":"N","missed":"V","mist":"N","mistress":"N","moaned":"V","moat":"N","mole":"N","monastery":"N","monk":"N","monsoon":"N","moon":"N","moonless":"J","moored":"V","mooring":"N","morning":"NJ","moth":"N","mother":"N","motherless":"J","mourned":"V","mourner":"N","mouth":"N","mud":"N","mudflat":"N","mudlark":"N","murmured":"V","mussel":"N","must":"C","mute":"J","mutineer":"N","my":"C","nail":"N","nailed":"V","name":"NV","named":"V","nameless":"J","narrow":"J","narrowed":"V","narrows":"N","narwhal":"N","nave":"N","navigator":"N","nay":"C","near":"JC","nearly":"C","needed":"V","needle":"N","neighbor":"N","neither":"C","nest":"N","net":"N","never":"MJC","new":"J","night":"N","nightjar":"N","nine":"N","no":"C","nobody":"J","none":"NJ","noone":"J","nor":"C","not":"MC","nothing":"J","noticed":"V","now":"JC","nowhere":"J","numb":"J","nun":"N","nurse":"N","nursed":"V","nursery":"N","o":"C","oar":"N","oath":"N","obeyed":"V","octopus":"N","of":"C","oh":"C","oil":"N","old":"J","omen":"N","on":"C","once":"JC","one":"N","only":"JC","onto":"C","open":"VJ","opened":"V","or":"C","oracle":"N","orca":"N","orchard":"N","orphan":"N","orphanage":"N","osprey":"N","ossuary":"N","otherwise":"J","otter":"N","our":"C","ours":"J","outpost":"N","outside":"JC","oven":"N","over":"C","owe":"V","owed":"VJ","owl":"N","ox":"N","oyster":"N","oysterman":"N","paid":"VJ","palace":"N","pale":"J","palm":"N","pantry":"N","parlor":"N","passage":"N","past":"C","pasture":"N","patience":"N","patient":"J","paused":"V","peace":"N","pearl":"N","pebble":"N","pelt":"N","pen":"N","perhaps":"C","petrel":"N","pew":"N","pier":"N","pig":"N","pilgrim":"N","pilot":"N","piper":"N","pit":"N","pity":"N","plague":"N","ploughman":"N","plover":"N","plunged":"V","poet":"N","pool":"N","porch":"N","porpoise":"N","poured":"V","prawn":"N","prayed":"V","prayer":"N","praying":"J","presence":"N","pressed":"V","pressure":"N","pride":"N","priest":"N","prince":"N","princess":"N","prison":"N","prisoner":"N","probe":"N","promise":"NV","promised":"VJ","prophet":"N","psalm":"N","puffin":"N","pulled":"V","pulpit":"N","pulse":"N","punished":"V","pushed":"V","quarry":"N","quay":"N","queen":"N","question":"N","quiet":"J","quite":"C","rafters":"N","rage":"N","rain":"NV","rainbow":"N","rainstorm":"N","raised":"V","ram":"N","rampart":"N","ran":"V","rang":"V","rat":"N","rather":"C","raven":"N","ravine":"N","reader":"N","red":"J","reef":"N","refused":"V","regret":"N","remedy":"N","remember":"V","remembered":"VJ","rescued":"V","reservoir":"N","rested":"V","restless":"J","return":"V","returned":"V","returning":"J","rib":"N","ribbon":"N","riddle":"N","ridge":"N","rime":"N","ring":"N","rinsed":"V","ripple":"N","rise":"V","risen":"J","rising":"J","river":"N","riverbed":"N","road":"N","robin":"N","rock":"N","rocked":"V","rockpool":"N","roof":"N","rook":"N","room":"N","rooster":"N","root":"N","rope":"N","rosary":"N","rose":"V","rotted":"V","rowed":"V","ruin":"N","rumor":"N","rust":"NV","rusted":"VJ","sacred":"J","sail":"N","sailed":"V","sailor":"N","saint":"N","salt":"NJ","salted":"J","saltmarsh":"N","saltworks":"N","salvager":"N","sanctuary":"N","sand":"N","sandbank":"N","sandbar":"N","sandpiper":"N","sang":"V","sank":"V","sat":"V","saved":"V","saw":"V","scale":"N","scar":"N","scarcely":"C","scattered":"V","school":"N","screamed":"V","sea":"N","seabed":"N","seafloor":"N","seal":"NV","sealed":"VJ","searched":"V","seawall":"N","seaward":"J","secret":"N","see":"V","seed":"N","seer":"N","sensed":"V","sent":"V","sentry":"N","servant":"N","settled":"V","severed":"J","sewed":"V","sexton":"N","shadow":"N","shaft":"N","shake":"V","shall":"C","shallow":"J","shallows":"N","shame":"N","shark":"N","shattered":"V","she":"P","shearwater":"N","shed":"N","shelf":"N","shell":"N","sheltered":"V","shepherd":"N","shingle":"N","ship":"N","shipyard":"N","shivered":"V","shoal":"N","shone":"V","shook":"V","shore":"N","shoreless":"J","shoreline":"N","shorn":"J","should":"C","shoulder":"N","shrank":"V","shrimp":"N","shrine":"N","shroud":"N","sickness":"N","sighed":"V","sign":"NV","signed":"VJ","silence":"N","silent":"J","silt":"N","silver":"J","since":"C","singer":"N","singing":"J","sink":"V","sinkhole":"N","sinking":"J","sister":"N","skin":"N","skua":"N","skull":"N","sleep":"NV","sleeper":"N","sleeping":"J","sleepless":"J","sleet":"N","slept":"V","slipped":"V","slow":"J","slowly":"J","sluice":"N","smelled":"V","smiled":"V","smith":"N","smoke":"N","smothered":"V","smuggler":"N","snow":"N","snowstorm":"N","so":"C","soaked":"VJ","sobbed":"V","sodden":"J","soft":"J","softened":"V","sold":"V","soldier":"N","some":"C","somebody":"J","somewhere":"J","son":"N","song":"N","soon":"C","sorrow":"N","sought":"V","sound":"N","sounded":"V","spark":"N","sparrow":"N","spat":"V","speak":"V","spider":"N","spilled":"V","spindrift":"N","spine":"N","spoke":"V","spoken":"J","spoon":"N","spray":"N","spring":"N","spun":"V","squall":"N","square":"N","squid":"N","stable":"N","stair":"N","star":"N","stared":"V","starfish":"N","starless":"J","starve":"V","starved":"NVJ","static":"NJ","station":"N","stay":"V","stayed":"V","staying":"J","steeple":"N","stepmother":"N","stern":"N","still":"MJC","stillness":"J","stingray":"N","stirred":"V","stitched":"V","stole":"V","stolen":"J","stone":"N","stood":"V","stope":"N","storehouse":"N","storm":"N","story":"N","stowaway":"N","strait":"N","stranger":"N","stream":"N","street":"N","struck":"V","such":"C","summoned":"V","sump":"N","sundered":"J","sunken":"J","surely":"C","surface":"NV","surfaced":"V","swallowed":"V","swam":"V","swamp":"N","swan":"N","swayed":"V","swelled":"V","swept":"V","swim":"V","swimmer":"N","swore":"V","sworn":"J","take":"V","taken":"J","tasted":"V","taught":"V","tavern":"N","tempest":"N","temple":"N","ten":"N","tender":"N","tenth":"N","tern":"N","terrace":"N","than":"C","that":"C","thawed":"V","the":"C","their":"C","theirs":"J","them":"J","then":"MJC","thence":"C","there":"JC","thereafter":"C","thereby":"C","therefore":"C","therein":"C","these":"C","they":"P","thicket":"N","thief":"N","thirst":"N","thirsted":"V","thirsty":"J","this":"C","thither":"C","those":"C","though":"C","thread":"N","three":"N","threshold":"N","throat":"N","through":"C","throughout":"C","thunder":"N","thunderhead":"N","thus":"C","tide":"N","tideless":"J","tidepool":"N","tied":"V","till":"C","tired":"J","to":"C","toad":"N","together":"J","tolled":"V","tomb":"N","tomorrow":"J","tongue":"N","tonight":"J","too":"JC","took":"V","tooth":"N","tore":"V","torrent":"N","touched":"V","toward":"C","towards":"C","tower":"N","traded":"V","traveler":"N","trembled":"V","trench":"N","trusted":"V","tunnel":"N","turn":"V","turned":"V","tusk":"N","twice":"J","twin":"N","two":"N","typhoon":"N","unanswered":"J","unborn":"J","unbroken":"J","unburied":"J","uncle":"N","under":"C","undercroft":"N","underneath":"JC","undertaker":"N","undertow":"N","underworld":"N","undone":"J","undying":"J","unending":"J","unheard":"J","unkept":"J","unknown":"J","unless":"C","unlike":"C","unlit":"J","unlocked":"V","unloved":"J","unnamed":"J","unopened":"J","unpaid":"J","unseen":"J","unspoken":"J","until":"C","untold":"J","unwanted":"J","unwatched":"J","unwritten":"J","upon":"C","upward":"J","urchin":"N","us":"PJ","vagrant":"N","valley":"N","vanished":"V","vault":"N","veil":"N","vein":"N","verse":"N","very":"C","vestry":"N","village":"N","vineyard":"N","voice":"N","voiceless":"J","vow":"N","waded":"V","wait":"V","waited":"V","waiting":"VJ","wake":"V","waking":"J","walked":"V","wall":"N","walrus":"N","wandered":"V","wanderer":"N","wanted":"V","ward":"N","warden":"N","warehouse":"N","warmed":"V","was":"XC","washed":"V","washhouse":"N","watch":"V","watched":"V","watching":"J","watchman":"N","water":"N","wave":"N","wax":"N","we":"P","weary":"J","weaver":"N","weep":"V","weeping":"J","weighed":"V","weight":"N","weir":"N","welcomed":"V","well":"N","went":"V","wept":"V","were":"XC","wet":"J","whale":"N","whaler":"N","wharf":"N","what":"C","whatever":"C","wheel":"N","when":"C","whence":"C","whenever":"C","where":"C","whereas":"C","whereby":"C","wherein":"C","whereupon":"C","wherever":"C","whether":"C","which":"C","while":"C","whilst":"C","whirlpool":"N","whirlwind":"N","whisper":"NV","whispered":"V","white":"J","who":"MC","whoever":"C","whole":"J","whom":"C","whose":"C","wick":"N","wicked":"J","wide":"J","widened":"V","widow":"N","widower":"N","wife":"N","will":"XC","wind":"N","window":"N","winter":"N","wished":"V","witch":"N","with":"C","within":"C","without":"C","witness":"N","woke":"V","wolf":"N","womb":"N","won":"V","word":"N","wordless":"J","wore":"V","worm":"N","would":"C","wound":"N","wounded":"V","wove":"V","wrapped":"V","wrath":"N","wreath":"N","wreck":"N","wrecker":"N","wren":"N","wrist":"N","write":"V","written":"J","wrote":"V","yard":"N","yea":"C","year":"N","yesterday":"J","yet":"C","yonder":"C","you":"P","young":"J","your":"C","yours":"J","zephyr":"N"};       // word -> letters of P N V X M J C  (lexicon.py + tags8.json)
+const SETS = {"abstract":["absence","answer","awe","call","chance","chronicle","cry","cure","curse","day","debt","despair","distance","dread","dream","echo","envy","faith","famine","fate","fear","fever","folly","fortune","glory","greed","grief","guilt","honor","hope","hour","hunger","hush","hymn","imprint","joy","law","letter","lie","longing","luck","mark","memory","mercy","mirth","name","nine","none","oath","omen","one","patience","peace","pity","plague","prayer","presence","pride","promise","psalm","question","rage","regret","remedy","riddle","rumor","secret","shame","sickness","sign","silence","sleep","song","sorrow","static","story","ten","thirst","three","two","verse","voice","vow","weight","whisper","winter","word","wrath","year"],"people":["maker","reader","diver","probe","tender","tenth","mother","father","child","ghost","stranger","keeper","sleeper","miner","sailor","widow","daughter","son","brother","sister","elder","pilot","warden","drowned","starved","bride","twin","orphan","beggar","fisher","ferryman","priest","witness","thief","singer","mourner","swimmer","digger","watchman","healer","midwife","smith","weaver","hunter","we","you","i","they","she","he","it","captain","cook","clerk","cousin","uncle","aunt","grandmother","grandfather","husband","wife","infant","boy","girl","neighbor","guest","host","servant","master","mistress","shepherd","ploughman","carpenter","mason","baker","butcher","tailor","cobbler","chandler","cooper","tanner","miller","brewer","gardener","sexton","gravedigger","undertaker","nun","monk","abbot","bishop","deacon","crew","mate","bosun","deckhand","stoker","lookout","helmsman","navigator","harpooner","whaler","soldier","sentry","guard","drummer","piper","fiddler","poet","scribe","judge","jailer","prisoner","exile","pilgrim","wanderer","traveler","messenger","courier","herald","king","queen","prince","princess","lord","lady","heir","widower","foundling","changeling","saint","martyr","prophet","oracle","seer","witch","hermit","fool","liar","debtor","creditor","congregation","lamplighter","sailmaker","boatwright","netmaker","ropemaker","bellfounder","stepmother","godmother","nurse","matron","governess","beadle","bailiff","coroner","magistrate","constable","vagrant","drifter","castaway","stowaway","mutineer","smuggler","wrecker","salvager","lightkeeper","fishwife","oysterman","cockler","mudlark","cabinboy","fisherman"],"human_verbs":["answer","answered","ask","asked","beg","begged","believe","believed","betray","betrayed","bless","blessed","borrow","borrowed","bought","bow","bowed","buy","call","called","chant","chanted","command","commanded","confess","confessed","count","counted","curse","cursed","denied","deny","doubt","doubted","dream","dreamed","fear","feared","forgave","forget","forgive","forgot","grieve","grieved","guess","guessed","hope","hoped","invite","invited","judge","judged","kiss","kissed","kneel","knelt","knew","knock","knocked","know","laugh","laughed","learn","learned","lend","lent","lie","lied","listen","listened","love","loved","married","marry","mean","meant","measure","measured","miss","missed","mourn","mourned","murmur","murmured","name","named","obey","obeyed","owe","owed","paid","pay","pray","prayed","promise","promised","refuse","refused","remember","remembered","sang","scream","screamed","sell","sing","smile","smiled","sob","sobbed","sold","speak","spoke","steal","stole","summon","summoned","swear","swore","taught","teach","trade","traded","trust","trusted","wait","waited","want","wanted","weep","welcome","welcomed","wept","whisper","whispered","wish","wished","write","wrote"]};       // abstract, people, human_verbs     (sets8.json)
+
+const API = 'https://mempool.space/api';
+const $ = id => document.getElementById(id);
+const out = $('day'), input = $('d');
+const ABSTRACT = new Set(SETS.abstract), PEOPLE = new Set(SETS.people), HUMAN = new Set(SETS.human_verbs);
+
+function el(tag, cls, text) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  return e;
+}
+function say(text) { out.replaceChildren(el('div', 'msg', text)); }
+
+// ---- the reading rule (same as reader.html) --------------------------------
+function read(hash) {
+  const hex = hash.toLowerCase();
+  const silence = hex.length - hex.replace(/^0+/, '').length;
+  const body = hex.slice(silence, silence + 16).padEnd(16, '0');
+  const idx = [];
+  for (let i = 0; i < 8; i++) idx.push(parseInt(body.slice(i * 2, i * 2 + 2), 16) % 256);
+  return { silence, idx, words: idx.map((n, c) => COLS[c][n]) };
+}
+
+// ---- the page's scorer: a line-for-line port of score.py and score8.py -----
+// It only chooses which readings this page shows first. It is not part of the reading rule.
+const tg = w => TAGS[w] || '';
+const has = (w, letters) => [...letters].some(l => tg(w).includes(l));
+const isConn = w => tg(w).includes('C') && !has(w, 'PNVJ');
+const isSubj = w => has(w, 'PN');
+const isVerb = w => tg(w).includes('V');
+
+function clauses(words) {
+  const res = [];
+  for (let i = 0; i < words.length - 1; i++) {
+    if (!isSubj(words[i])) continue;
+    const a = words[i + 1];
+    if (isVerb(a) && (!isSubj(a) || tg(words[i]).includes('P') || tg(a).includes('J'))) { res.push([i, i + 1]); continue; }
+    if (i + 2 < words.length && has(a, 'XM')) {
+      const b = words[i + 2];
+      if (isVerb(b) || (tg(a).includes('X') && has(b, 'JN'))) res.push([i, i + 2]);
+    }
+  }
+  return res;
+}
+
+function baseScore(words) {
+  let s = 0;
+  if (new Set(words).size < words.length - 1) s -= 2;
+  const last = words[words.length - 1];
+  if (isConn(last) || last === 'quiet') s -= 3;
+  for (let k = 0; k < words.length - 1; k++) if (isConn(words[k]) && isConn(words[k + 1])) s -= 2;
+  const cl = clauses(words);
+  if (!cl.length) return s - 5;
+  s += 2;
+  const [i, j] = cl[0];
+  if (tg(words[i]).includes('P') || j === i + 1) s += 1;
+  if (cl.some(c => c[0] > j)) s += 1;
+  if (j + 1 < words.length && has(words[j + 1], 'NJ')) s += 1;
+  const nconn = words.filter(isConn).length;
+  s += (nconn >= 1 && nconn <= 3) ? 1 : -1;
+  if (isSubj(words[0]) && !isConn(words[0])) s += 1;
+  return s;
+}
+
+function surprise(words) {
+  let b = 0;
+  for (const [i, j] of clauses(words)) {
+    const s = words[i], v = words[j];
+    if (!PEOPLE.has(s) && !ABSTRACT.has(s) && HUMAN.has(v)) b += 2;
+    if (ABSTRACT.has(s) && isVerb(v) && !HUMAN.has(v)) b += 2;
+  }
+  for (let k = 0; k < words.length - 1; k++) {
+    const v = words[k], o = words[k + 1];
+    if (isVerb(v) && !HUMAN.has(v) && ABSTRACT.has(o)) b += 1;
+  }
+  return Math.min(b, 4);
+}
+
+const score = words => baseScore(words) + surprise(words);
+
+function rank(rows, top = 50, limit = 3, penalty = 2) {
+  rows.forEach(r => { r.final = score(r.words); });
+  for (;;) {
+    rows.sort((a, b) => (b.final - a.final) || (a.height - b.height));
+    const seen = {};
+    let changed = false;
+    for (const r of rows.slice(0, top)) {
+      const end = r.words[r.words.length - 1];
+      seen[end] = (seen[end] || 0) + 1;
+      if (seen[end] > limit) { r.final -= penalty; changed = true; }
+    }
+    if (!changed) return rows;
+  }
+}
+
+// ---- fetching one UTC day of blocks from mempool.space ----------------------
+async function json(url) {
+  const res = await fetch(url, { cache: 'no-store' });
+  if (!res.ok) throw new Error('mempool.space answered ' + res.status);
+  return res.json();
+}
+
+async function blocksOfDay(start, end, progress) {
+  // the last block at or before the end of the day, then walk down 15 at a time
+  const edge = await json(API + '/v1/mining/blocks/timestamp/' + Math.min(end, Math.floor(Date.now() / 1000)));
+  const found = new Map();
+  let h = edge.height + 6;                       // block times are not strictly ordered; start a little above
+  for (let guard = 0; guard < 40 && h >= 0; guard++) {
+    let page;
+    try { page = await json(API + '/v1/blocks/' + h); }
+    catch (e) { if (guard === 0) { h = edge.height; continue; } throw e; }
+    if (!page.length) break;
+    for (const b of page) if (b.timestamp >= start && b.timestamp < end) found.set(b.height, b);
+    progress(found.size);
+    const newest = Math.max(...page.map(b => b.timestamp));
+    if (newest < start - 7200) break;            // a whole page well before the day: done
+    h = page[page.length - 1].height - 1;
+  }
+  return [...found.values()].sort((a, b) => a.height - b.height);
+}
+
+// ---- the piece: half-readings that hold together, spread across the day ----
+function spread(list, n) {
+  if (list.length <= n) return list;
+  const res = [];
+  for (let k = 0; k < n; k++) res.push(list[Math.floor((k + 0.5) * list.length / n)]);
+  return res;
+}
+function piece(rows) {
+  const noZero = (r, a, b) => r.idx.slice(a, b).every(x => x !== 0);
+  // first halves: subject, verb, then a determiner or preposition before the place
+  const firsts = rows.filter(r => r.idx[2] >= 1 && r.idx[2] <= 30 && noZero(r, 0, 4));
+  // second halves: a true conjunction opening the second clause
+  const used = new Set(firsts.map(r => r.height));
+  const seconds = rows.filter(r => r.idx[4] >= 1 && r.idx[4] <= 19 && noZero(r, 4, 8) && !used.has(r.height));
+  // each first half is answered by the next second half that follows it in the day
+  const a = spread(firsts, 4), lines = [];
+  for (let k = 0; k < a.length; k++) {
+    lines.push({ r: a[k], text: a[k].words.slice(0, 4).join(' ') });
+    const until = k + 1 < a.length ? a[k + 1].height : Infinity;
+    const b = seconds.find(r => r.height > a[k].height && r.height < until);
+    if (b) lines.push({ r: b, text: b.words.slice(4).join(' ') });
+  }
+  return lines;
+}
+
+// ---- rendering --------------------------------------------------------------
+const hhmm = t => new Date(t * 1000).toISOString().slice(11, 16);
+const link = (r, text, cls) => { const a = el('a', cls, text); a.href = 'reader.html#' + r.height; return a; };
+
+function render(date, rows) {
+  const first = rows[0], last = rows[rows.length - 1];
+  const at = el('div', 'at', date + ' UTC · ' + rows.length + ' blocks · ' +
+    first.height.toLocaleString('en-US') + ' to ' + last.height.toLocaleString('en-US'));
+
+  const s1 = el('section');
+  const wh = el('div', 'whisper');
+  rows.forEach(r => wh.append(link(r, r.words[0], r.idx[0] === 0 ? 'zero' : null)));
+  s1.append(el('h2', null, "the day's whisper"), wh);
+
+  const s2 = el('section');
+  const ol = el('ol', 'picks');
+  rank(rows.slice()).slice(0, 5).forEach(r => {
+    const li = el('li');
+    const t = el('time', null, hhmm(r.timestamp));
+    const a = link(r, '');
+    r.words.forEach((w, c) => { a.append(el('span', r.idx[c] === 0 ? 'zero' : null, w), c < 7 ? ' ' : ''); });
+    li.append(t, a, el('small', null, r.height.toLocaleString('en-US')));
+    ol.append(li);
+  });
+  s2.append(el('h2', null, "the page's picks"), ol,
+    el('p', 'note', "These five are an editorial choice, made by this page's scorer (score8.py). The scorer is not part of the reading rule and is not carved. Every block of the day reads the same for everyone; only this shortlist is the page's opinion."));
+
+  const s3 = el('section');
+  const pc = el('div', 'piece');
+  piece(rows).forEach(l => pc.append(link(l.r, l.text)));
+  s3.append(el('h2', null, 'a piece from the day'), pc,
+    el('p', 'note', 'Each line is half of one block\'s reading, unchanged and in the order of the day. Follow a line to its block.'));
+
+  out.replaceChildren(at, s1, s2, s3);
+}
+
+async function show(date) {
+  const start = Date.parse(date + 'T00:00:00Z') / 1000;
+  if (isNaN(start)) { say('enter a date'); return; }
+  if (start * 1000 > Date.now()) { say('that day has not happened yet'); return; }
+  say('reading the day…');
+  try {
+    const blocks = await blocksOfDay(start, start + 86400, n => say('reading the day… ' + n + ' blocks'));
+    if (!blocks.length) { say('no blocks on that day'); return; }
+    const rows = blocks.map(b => Object.assign({ height: b.height, timestamp: b.timestamp }, read(b.id)));
+    render(date, rows);
+    if (location.hash.slice(1) !== date) history.replaceState(null, '', '#' + date);
+  } catch (e) { say(e.message || 'could not reach mempool.space'); }
+}
+
+$('f').addEventListener('submit', e => { e.preventDefault(); show(input.value); });
+addEventListener('hashchange', () => { const d = location.hash.slice(1); if (/^\d{4}-\d\d-\d\d$/.test(d)) { input.value = d; show(d); } });
+
+const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+input.max = new Date().toISOString().slice(0, 10);
+input.value = /^\d{4}-\d\d-\d\d$/.test(location.hash.slice(1)) ? location.hash.slice(1) : yesterday;
+show(input.value);
+</script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bake alphabet.txt into reader.html.
+"""Bake alphabet.txt into reader.html and day.html.
 
 Usage: python3 build.py            (expects alphabet.txt next to this file)
 
@@ -70,7 +70,20 @@ def main():
     a, b = page.index("/*GLOSSES*/"), page.index("/*GEND*/") + len("/*GEND*/")
     page = page[:a] + json.dumps(glosses, ensure_ascii=False, separators=(",", ":")) + page[b:]
     (HERE / "reader.html").write_text(page, encoding="utf-8")
-    print("hash matches the carving, anchors read correctly, reader.html written")
+
+    # day.html: the same columns, plus the scorer's tags and sets for "the page's picks"
+    sys.path.insert(0, str(HERE))
+    import score8                      # merges lexicon.py tags with tags8.json into score.TAGS
+    import score as base
+    order = "PNVXMJC"
+    tags = {w: "".join(l for l in order if l in t) for w, t in sorted(base.TAGS.items())}
+    sets = json.loads((HERE / "sets8.json").read_text(encoding="utf-8"))
+    day = (HERE / "day.template.html").read_text(encoding="utf-8")
+    for start, end, value in (("/*ALPHABET*/", "/*END*/", cols), ("/*TAGS*/", "/*TEND*/", tags), ("/*SETS*/", "/*SEND*/", sets)):
+        a, b = day.index(start), day.index(end) + len(end)
+        day = day[:a] + json.dumps(value, ensure_ascii=False, separators=(",", ":")) + day[b:]
+    (HERE / "day.html").write_text(day, encoding="utf-8")
+    print("hash matches the carving, anchors read correctly, reader.html and day.html written")
 
 
 if __name__ == "__main__":
